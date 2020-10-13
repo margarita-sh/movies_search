@@ -9,12 +9,14 @@ import { GenresComponent } from './genres/genres.component';
 import { GenresService } from './genres/service/genres.service';
 import { SearchComponent } from './search/search.component';
 import { SearchService } from './search/service/search.service';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
 	AppComponent,
 	GenresComponent,
 	SearchComponent,
+	CardComponent,
   ],
   imports: [
 	BrowserModule,

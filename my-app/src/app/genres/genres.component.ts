@@ -9,11 +9,10 @@ import { Genres } from './model/genres.model';
 })
 export class GenresComponent implements OnInit {
 	public genresMovies: Genres[] = [];
-
 	constructor(private resultGenres: GenresService) { }
 
 	public ngOnInit(): void {
-		 this.resultGenres.outputGenres().subscribe((data: any) =>  data.map((item: any) => this.genresMovies.push(item.name)));
+		 this.resultGenres.outputGenres().subscribe((data: any) =>  this.genresMovies = data.map((item: any) => item.name));
 	}
 
 }
