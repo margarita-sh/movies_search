@@ -13,7 +13,7 @@ export class GenresComponent implements OnInit {
 	constructor(private resultGenres: GenresService) { }
 
 	public ngOnInit(): void {
-		 this.resultGenres.searchFilm().subscribe((data: any) =>  data.map((item: any) => this.genresMovies.push(item.name)));
+		 this.resultGenres.outputGenres().subscribe((data: any) =>  data.map((item: any) => this.genresMovies.push(item.name)));
 	}
 
 }
