@@ -1,6 +1,16 @@
-<div>
-<!-- 	<div>{{movie.title}}</div> -->
-	<img [src] = "imageBaseurl+movie.poster_path">
-	<div [ngStyle]="{'width':'200px', 'height':'200px', 'border':'1px solid black'}"></div>
-	<div>{{movie.title}}</div>
+<div class="app-card">
+	<div class="app-card--container">
+<!-- 	 <img [src] = "imageBaseurl+movie.poster_path">  -->
+<div class="app-card--wrapper-img">
+<img src="{{ posterUrl }}" alt="poster" class="app-card--img">
+</div>
+	 <div class="app-card--information">
+		 <h3>{{movie.title}}</h3> 
+		 <p>{{movie.overview}}</p>
+		 <p><strong>Average vote: </strong>{{ movie.vote_average }}</p>
+         <p><strong>Relase date: </strong>{{ movie.release_date }}</p>
+         <p><strong>Popularity: </strong>{{ movie.popularity }}</p>
+         <p><strong>Votes: </strong>{{ movie.vote_count }}</p>
+	 </div>
+	</div>
 </div>

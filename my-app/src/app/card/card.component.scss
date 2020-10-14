@@ -1,0 +1,32 @@
+.app-card {
+	width:800px;
+	margin:10px;
+	border:1px solid red;
+
+	&--container {
+		display:flex;
+	}
+
+	&--information {
+		margin-left:10px;
+	}
+	 &--wrapper-img {
+		position: relative;
+	 /* opacity:0.8;  
+		background: #000000;*/
+
+	} 
+	&--wrapper-img:after { 
+		content: ''; 
+		position: absolute; 
+		top: 0;
+		left: 0; 
+		right: 0; 
+		bottom: 0; 
+		background: rgba(0,0,0,.5);  
+		opacity: 0; 
+	}
+ 	&--wrapper-img:hover:after { 
+		 opacity: 1; 
+		} 
+}
