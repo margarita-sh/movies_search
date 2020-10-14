@@ -1,7 +1,6 @@
 <div class="app-card">
 	<div class="app-card--container">
-<!-- 	 <img [src] = "imageBaseurl+movie.poster_path">  -->
-<div class="app-card--wrapper-img">
+<div class="app-card--wrapper-img" (click)="getDetails(movie.id)">
 <img src="{{ posterUrl }}" alt="poster" class="app-card--img">
 </div>
 	 <div class="app-card--information">
