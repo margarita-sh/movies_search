@@ -1,6 +1,6 @@
 <div>
 <!-- 	<div>{{movie.title}}</div> -->
-	 <img [src] = "srcMovie"> 
-
+	<img [src] = "imageBaseurl+movie.poster_path">
+	<div [ngStyle]="{'width':'200px', 'height':'200px', 'border':'1px solid black'}"></div>
 	<div>{{movie.title}}</div>
 </div>
