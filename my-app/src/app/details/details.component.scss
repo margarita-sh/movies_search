@@ -1,0 +1,10 @@
+.app-details {
+	border:1px solid red;
+
+	&--container {
+		display:flex;
+	}
+	&--info {
+		margin-left:10px;
+	}
+}

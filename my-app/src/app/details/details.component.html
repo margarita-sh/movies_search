@@ -1,7 +1,23 @@
 <div class="app-details">
 	<h3>{{ (movieDetails$ | async)?.title }}</h3>	
-	<div>
-		<!-- <img [src]="https://image.tmdb.org/t/p/w300 + (movieDetails$ | async)?.poster_path" alt=""> -->
-		<img  src= "https://image.tmdb.org/t/p/w300{{(movieDetails$ | async)?.poster_path}}" alt="">
+	<div class="app-details--container">
+		<img  src= "https://image.tmdb.org/t/p/w300{{(movieDetails$ | async)?.poster_path}}" alt="img">
+
+		<div class="app-details--info">
+			<p>{{ (movieDetails$ | async)?.overview }}</p>
+			<p><strong>Average vote: </strong>{{ (movieDetails$ | async)?.vote_average }}</p>
+			<p><strong>Data release: </strong>{{ (movieDetails$ | async)?.release_date }}</p>
+			<strong>Genre:</strong>
+			<span  *ngFor="let genre of (movieDetails$ | async)?.genres">
+				{{ genre.name }}, 
+			</span>
+			
+			<br>
+			<br>
+			<strong>Country: </strong><span *ngFor="let country of (movieDetails$ | async)?.production_countries">{{ country.name }}, </span>
+			<p><strong>Duration: </strong>{{ (movieDetails$ | async)?.runtime }} min</p>
+			<p><strong>Budget: </strong>{{ (movieDetails$ | async)?.budget }} $</p>
+
+		</div>
 	</div>
 </div>
