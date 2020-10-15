@@ -1,25 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SearchComponent } from './search/search.component';
+import { DetailsComponent } from './details/details.component';
+import { CardComponent } from './card/card.component';
 
 const routes: Routes = [
-	/* {
-	  path:'',
-	  component: HomeComponent
-	},
-	{
-	  path:'contacts',
-	  loadChildren: () => import('./contacts/contacts.module').then(m => m.ContactsModule)
-	  
-	},
-	{
-	  path:'about',
-	  component: AboutUsComponent,
-	  canActivate: [CanProceedToAboutUsGuard]
-	},
-	{
-	  path:'**',
-	  component: NotFoundComponent
-	} */
+ 	{ path: '', component: SearchComponent },
+ /*   { path: '', component: CardComponent }, */
+	{ path: 'movie-detail', component: DetailsComponent },
+	{ path: '**"', redirectTo: '/', pathMatch: 'full' }
   ];
 
 @NgModule({

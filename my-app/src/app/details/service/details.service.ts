@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { DetailsModel } from '../model/details.model';
 
 @Injectable({
@@ -12,9 +12,9 @@ export class DetailsService {
   constructor(private _http: HttpClient) {
    }
 
-public getDetailsOnid(movie_id: number): Observable<DetailsService> {
-	return this._http.get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${this._mykey}&language=en-US`).pipe(
-		map((item: any) => item));
+public getDetails(movie_id: number): Observable<any> {
+	console.log(movie_id);
+	return this._http.get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${this._mykey}&language=en-US`);
 }
 
 }

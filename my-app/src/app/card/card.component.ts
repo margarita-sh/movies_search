@@ -10,7 +10,7 @@ import { DetailsService } from '../details/service/details.service';
 export class CardComponent implements OnInit {
 	@Input() public movie: Search;
 	public posterUrl: string;
-	public imageBaseurl: string = 'https://image.tmdb.org/t/p/w300';
+	public imageBaseurl: string = 'https://image.tmdb.org/t/p/w200';
 	   constructor(public details: DetailsService) { }
 
 	// tslint:disable-next-line: no-empty
@@ -22,8 +22,8 @@ export class CardComponent implements OnInit {
 		}
 	}
 
-	public getDetails(id: number): void {
-		this.details.getDetailsOnid(id);
-	} 
+	 public getDetails(id: number): void {
+		this.details.getDetails(id);
+	}
 
 }

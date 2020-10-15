@@ -1,11 +1,12 @@
 <div class="app-card">
 	<div class="app-card--container">
-<div class="app-card--wrapper-img" (click)="getDetails(movie.id)">
+<div class="app-card--wrapper-img" routerLink="/movie-detail" 
+[queryParams]="{ movieId: movie.id }">
 <img src="{{ posterUrl }}" alt="poster" class="app-card--img">
 </div>
-	 <div class="app-card--information">
-		 <h3>{{movie.title}}</h3> 
-		 <p>{{movie.overview}}</p>
+	 <div class="app-card--information" >
+		 <h3>{{ movie.title }}</h3> 
+		 <p>{{ movie.overview }}</p>
 		 <p><strong>Average vote: </strong>{{ movie.vote_average }}</p>
          <p><strong>Relase date: </strong>{{ movie.release_date }}</p>
          <p><strong>Popularity: </strong>{{ movie.popularity }}</p>

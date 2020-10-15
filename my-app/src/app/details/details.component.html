@@ -1,1 +1,7 @@
-
+<div class="app-details">
+	<h3>{{ (movieDetails$ | async)?.title }}</h3>	
+	<div>
+		<!-- <img [src]="https://image.tmdb.org/t/p/w300 + (movieDetails$ | async)?.poster_path" alt=""> -->
+		<img  src= "https://image.tmdb.org/t/p/w300{{(movieDetails$ | async)?.poster_path}}" alt="">
+	</div>
+</div>
