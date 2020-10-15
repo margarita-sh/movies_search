@@ -17,7 +17,13 @@
 			<strong>Country: </strong><span *ngFor="let country of (movieDetails$ | async)?.production_countries">{{ country.name }}, </span>
 			<p><strong>Duration: </strong>{{ (movieDetails$ | async)?.runtime }} min</p>
 			<p><strong>Budget: </strong>{{ (movieDetails$ | async)?.budget }} $</p>
-
 		</div>
 	</div>
+	<!-- <div *ngFor = "let movie of (movieDetails$ | async)?.videos.result"> 
+		{{ movie.key}}
+	</div> -->
+
+	<iframe id="ytplayer" type="text/html" width="640" height="360"
+  src="https://www.youtube.com/embed/VSB4wGIdDwo"
+  frameborder="0"></iframe>
 </div>
