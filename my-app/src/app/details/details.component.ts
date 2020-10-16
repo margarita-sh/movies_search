@@ -3,6 +3,7 @@ import { DetailsService } from './service/details.service';
 import { ActivatedRoute } from '@angular/router';
 import { DetailsModel, Videos, Result } from './model/details.model';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-details',
@@ -16,17 +17,22 @@ export class DetailsComponent implements OnInit {
 	constructor(public detailsService: DetailsService, private activateRoute: ActivatedRoute) { }
 
 	public ngOnInit(): void {
+		// tslint:disable-next-line: deprecation
 		this.activateRoute.queryParams.subscribe((queryParams: ActivatedRoute) => {
 			this.movieDetails$ = this.detailsService.getDetails(queryParams['movieId']);
-			this.keyForVideo  = this.movieDetails$.pipe((item: DetailsModel) => {
-				item.videos.results.map((data: Result) => { 
-					console.log('data', data);
-
+			if (this.movieDetails$) {
+				this.movieDetails$.pipe(
+					map((item: DetailsModel) => {
+						return item.videos.results.find((data: Result) => {
+							return data.key;
+						});
+					})
+				).subscribe((item: Result)  => {
+					this.keyForVideo = item.key;
 				});
-			}).subscribe(item => item);
-			console.log('this.keyForVideo', this.keyForVideo);
-		});
+			}
 
+		});
 
 	}
 
