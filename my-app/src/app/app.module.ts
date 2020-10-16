@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GenresComponent } from './genres/genres.component';
 import { GenresService } from './genres/service/genres.service';
@@ -12,6 +12,8 @@ import { SearchService } from './search/service/search.service';
 import { CardComponent } from './card/card.component';
 import { DetailsComponent } from './details/details.component';
 import { DetailsService } from './details/service/details.service';
+import { PopularComponent } from './popular/popular.component';
+import { PopularService } from './popular/service/popular.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { DetailsService } from './details/service/details.service';
 	SearchComponent,
 	CardComponent,
 	DetailsComponent,
+	PopularComponent,
   ],
   imports: [
 	BrowserModule,
@@ -28,7 +31,7 @@ import { DetailsService } from './details/service/details.service';
 	FormsModule,
 	HttpClientModule,
   ],
-  providers: [GenresService, SearchService, DetailsService],
+  providers: [GenresService, SearchService, DetailsService, PopularService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

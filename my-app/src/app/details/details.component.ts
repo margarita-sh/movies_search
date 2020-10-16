@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
 
-
 @Component({
 	selector: 'app-details',
 	templateUrl: './details.component.html',
@@ -36,8 +35,6 @@ export class DetailsComponent implements OnInit {
 				).subscribe((item: Result)  => {
 					this.srcVideo = this.srcVideoFromYoutube + item.key;
 					this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.srcVideo);
-					console.log(this.trustedUrl);
-					//console.log(this.trustedUrl.changingThisBreaksApplicationSecurity);
 				});
 			}
 

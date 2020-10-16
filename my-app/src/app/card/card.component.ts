@@ -22,8 +22,8 @@ export class CardComponent implements OnInit {
 		}
 	}
 
-	 public getDetails(id: number): void {
+	/*  public getDetails(id: number): void {
 		this.details.getDetails(id);
-	}
+	} */
 
 }
