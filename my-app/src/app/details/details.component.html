@@ -11,7 +11,6 @@
 			<span *ngFor="let genre of (movieDetails$ | async)?.genres">
 				{{ genre.name }},
 			</span>
-
 			<br>
 			<br>
 			<strong>Country: </strong><span
@@ -20,6 +19,13 @@
 			<p><strong>Budget: </strong>{{ (movieDetails$ | async)?.budget }} $</p>
 		</div>
 	</div>
+<div *ngIf = "trustedUrl">
+	64
+	{{srcVideo}}
 
-	<iframe  width="640" height="360" src="https://www.youtube.com/embed/{{keyForVideo}}" frameborder="0"></iframe>
+	<!--  <iframe  width="640" height="360" src="https://www.youtube.com/embed/{{keyForVideo}}" frameborder="0"></iframe> -->
+	 <iframe   width="640" height="360" [src]="trustedUrl" frameborder="0"></iframe>
+</div>
+
+
 </div>

@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { DetailsModel, Videos, Result } from './model/details.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
 	selector: 'app-details',
@@ -13,8 +15,12 @@ import { map } from 'rxjs/operators';
 
 export class DetailsComponent implements OnInit {
 	public movieDetails$: Observable<DetailsModel>;
-	public keyForVideo: string;
-	constructor(public detailsService: DetailsService, private activateRoute: ActivatedRoute) { }
+/* 	public keyForVideo: string; */
+	public srcVideoFromYoutube: string = 'https://www.youtube.com/embed/';
+	public srcVideo: string;
+	public trustedUrl: any;
+
+	constructor(public detailsService: DetailsService, private activateRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
 
 	public ngOnInit(): void {
 		// tslint:disable-next-line: deprecation
@@ -28,7 +34,10 @@ export class DetailsComponent implements OnInit {
 						});
 					})
 				).subscribe((item: Result)  => {
-					this.keyForVideo = item.key;
+					this.srcVideo = this.srcVideoFromYoutube + item.key;
+					this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.srcVideo);
+					console.log(this.trustedUrl);
+					//console.log(this.trustedUrl.changingThisBreaksApplicationSecurity);
 				});
 			}
 
