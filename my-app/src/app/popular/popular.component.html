@@ -1,7 +1,41 @@
-<div class="app-popular">
+<!--  <div class="app-popular">
 	<div *ngFor = "let movie of listOfPopularMovies" class="app-popular--img-container" routerLink="/movie-detail" 
 	[queryParams]="{ movieId: movie.id }">
 		<img src="https://image.tmdb.org/t/p/w154{{movie.poster_path}}" alt="poster" class="app-popular--img">
 	</div>
-</div>
+</div>  -->
 
+
+
+
+
+
+<!--  <div class="app-popular">
+	 <div *ngFor = "let movies of listOfPopularMovies">
+	<div *ngFor = "let movie of movies" class="app-popular--img-container" routerLink="/movie-detail" 
+	[queryParams]="{ movieId: movie.id }">
+		<img src="https://image.tmdb.org/t/p/w154{{movie.poster_path}}" alt="poster" class="app-popular--img">
+	</div>
+   </div>
+</div> -->
+
+
+<mat-carousel
+  timings="250ms ease-in"
+  [autoplay]="true"
+  interval="6000"
+  [loop]="false"
+  [hideArrows]="false"
+  [hideIndicators]="false"
+  [useKeyboard]="true"
+  [useMouseWheel]="true"
+  maintainAspectRatio = "false"
+  slideHeight = "265px"
+  maxWidth = "870px">
+  <mat-carousel-slide *ngFor = "let movies of listOfPopularMovies" [ngStyle]="{'margin': 'auto'}">
+    <div *ngFor = "let movie of movies" class="app-popular--img-container" routerLink="/movie-detail" 
+	[queryParams]="{ movieId: movie.id }" [ngStyle]="{'display': 'inline'}">
+		<img src="https://image.tmdb.org/t/p/w154{{movie.poster_path}}" alt="poster" class="app-popular--img">
+	</div>
+  </mat-carousel-slide>
+</mat-carousel> 

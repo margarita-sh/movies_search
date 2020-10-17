@@ -14,6 +14,11 @@ import { DetailsComponent } from './details/details.component';
 import { DetailsService } from './details/service/details.service';
 import { PopularComponent } from './popular/popular.component';
 import { PopularService } from './popular/service/popular.service';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { A11yModule } from '@angular/cdk/a11y';
+import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -30,6 +35,11 @@ import { PopularService } from './popular/service/popular.service';
 	CommonModule,
 	FormsModule,
 	HttpClientModule,
+	MatCarouselModule.forRoot(),
+	A11yModule,
+	MatButtonModule,
+	MatIconModule,
+	BrowserAnimationsModule,
   ],
   providers: [GenresService, SearchService, DetailsService, PopularService],
   bootstrap: [AppComponent]

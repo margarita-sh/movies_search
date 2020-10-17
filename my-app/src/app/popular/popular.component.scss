@@ -1,8 +1,10 @@
 .app-popular {
 	display: flex;
-
+	border: 5px solid purple;
+	width:auto;
+	
 	&--img-container{
-	margin:1px;
+	margin:10px;
 	position: relative;
 	}
 	&--img-container:after { 
