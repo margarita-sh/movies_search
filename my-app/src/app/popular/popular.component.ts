@@ -31,15 +31,3 @@ export class PopularComponent implements OnInit {
 }
 
 }
-
-/* import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
-
-// [...]
-
-export class AppComponent {
-
-  // Array of images
-
-  slides = [{'image': 'https://gsr.dev/material2-carousel/assets/demo.png'}, {'image': 'https://gsr.dev/material2-carousel/assets/demo.png'},{'image': 'https://gsr.dev/material2-carousel/assets/demo.png'}, {'image': 'https://gsr.dev/material2-carousel/assets/demo.png'}, {'image': 'https://gsr.dev/material2-carousel/assets/demo.png'}];
-
-} */

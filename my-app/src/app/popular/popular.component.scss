@@ -2,11 +2,17 @@
 	display: flex;
 	border: 5px solid purple;
 	width:auto;
-	
+
 	&--img-container{
+	display: inline;
 	margin:10px;
-	position: relative;
+/* 	position: relative; */
+	opacity: 0.8;
 	}
+	&--img-container:hover{
+		opacity: 1;
+		}
+	/* 
 	&--img-container:after { 
 		content: ''; 
 		position: absolute; 
@@ -19,5 +25,5 @@
 	}
  	&--img-container:hover:after { 
 		 opacity: 1; 
-		} 
+		}  */
 }
