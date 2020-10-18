@@ -32,7 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
 	BrowserModule,
 	AppRoutingModule,
-	CommonModule,
+ 	CommonModule,
 	FormsModule,
 	HttpClientModule,
 	MatCarouselModule.forRoot(),

@@ -1,3 +1,7 @@
-<div>
-    <div  *ngFor="let genre of genresMovies">{{genre}}</div>
-</div>
+
+    <div  *ngFor="let genre of genresMovies" (click)="searchMovieById(genre.id)" class="app-genres--item">
+		<span>{{genre.name}}</span>
+	</div>
+ 	<div>
+		<app-card *ngFor="let movie of listOfMovies" [movie]="movie"></app-card>
+	</div> 

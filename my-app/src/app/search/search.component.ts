@@ -20,7 +20,7 @@ export class SearchComponent implements OnInit {
 	public resultSearchMovie(): void {
 		this.searchMovies.searchFilm(this.nameMovie).subscribe((item: Search[]) => {
 			this.listOfMovies = item;
-			console.log('this.listOfMovies', this.listOfMovies);
+			// console.log('this.listOfMovies', this.listOfMovies);
 		});
 	}
 
