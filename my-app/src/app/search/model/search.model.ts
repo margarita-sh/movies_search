@@ -1,4 +1,4 @@
-export interface Search {
+export interface Movie {
 	popularity: number;
 	id: number;
 	video: boolean;

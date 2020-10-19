@@ -1,7 +1,2 @@
-<input type="text" [(ngModel)] = "nameMovie"> 
-<button (click) = "resultSearchMovie()">Search</button>
-<div>
-		<app-card *ngFor="let movie of listOfMovies" [movie]="movie"></app-card>
-</div>
-
-
+<input type="text" [(ngModel)] = "nameMovie" placeholder="Search for movies..."> 
+<button [routerLink]="['search', nameMovie]">Search</button>

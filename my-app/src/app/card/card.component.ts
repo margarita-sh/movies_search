@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Search } from '../search/model/search.model';
+import { Movie } from '../search/model/search.model';
 import { DetailsService } from '../details/service/details.service';
 
 @Component({
@@ -8,12 +8,11 @@ import { DetailsService } from '../details/service/details.service';
 	styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-	@Input() public movie: Search;
+	@Input() public movie: Movie;
 	public posterUrl: string;
 	public imageBaseurl: string = 'https://image.tmdb.org/t/p/w200';
 	   constructor(public details: DetailsService) { }
 
-	// tslint:disable-next-line: no-empty
 	public ngOnInit(): void {
 		if (this.movie.poster_path === null) {
 			this.posterUrl = '/assets/img/img-not-found.png';
@@ -21,9 +20,4 @@ export class CardComponent implements OnInit {
 			this.posterUrl = this.imageBaseurl + this.movie.poster_path;
 		}
 	}
-
-	/*  public getDetails(id: number): void {
-		this.details.getDetails(id);
-	} */
-
 }
