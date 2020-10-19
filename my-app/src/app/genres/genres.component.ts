@@ -18,10 +18,11 @@ export class GenresComponent implements OnInit {
 		 // this.resultGenres.outputGenres().subscribe((data: any) =>  this.genresMovies = data.map((item: any) => item.name));
 		this.resultGenres.outputGenres().subscribe((data: any) =>  this.genresMovies = data);
 	}
-	public searchMovieById(id: number): void {
+/* 	public searchMovieById(id: number): void {
 		this.searchByGenres.searchFilmByGenres(id).subscribe((item: Search[]) => {
 			this.listOfMovies = item;
 		});
-	}
+	} */
 
+			// console.log('this.listOfMovies', this.listOfMovies
 }
