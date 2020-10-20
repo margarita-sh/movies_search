@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PopularService } from './service/popular.service';
-import { Popular, Result } from './model/popular.model';
-import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
+import { SearchService } from '../search/service/search.service';
+import { Result, Movie } from '../search/model/search.model';
 
 @Component({
 	selector: 'app-popular',
@@ -14,11 +13,11 @@ export class PopularComponent implements OnInit {
 	public listOfPopularMovies: [Result[]];
 	public sizeSubarray: number = 5;
 
-	constructor(public popularMovies: PopularService) { }
+	constructor(public popularMovies: SearchService) { }
 
 	public ngOnInit(): void {
-		this.popularMovies.getPopularMovies().subscribe((item: Popular) => {
-			this.listOfPopularMovies = item.results.reduce((acc: any, cur: Result) => {
+		this.popularMovies.getPopularMovies().subscribe((item: Result) => {
+			this.listOfPopularMovies = item.results.reduce((acc: any, cur: Movie) => {
 				if (acc[acc.length - 1].length === this.sizeSubarray) {
 					acc.push([]);
 				}

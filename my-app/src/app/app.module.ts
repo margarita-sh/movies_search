@@ -13,13 +13,13 @@ import { CardComponent } from './card/card.component';
 import { DetailsComponent } from './details/details.component';
 import { DetailsService } from './details/service/details.service';
 import { PopularComponent } from './popular/popular.component';
-import { PopularService } from './popular/service/popular.service';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { A11yModule } from '@angular/cdk/a11y';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MovieListComponent } from './movie-list/movie-list.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 	DetailsComponent,
 	PopularComponent,
 	MovieListComponent,
+	HomeComponent,
   ],
   imports: [
 	BrowserModule,
@@ -43,7 +44,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 	MatIconModule,
 	BrowserAnimationsModule,
   ],
-  providers: [GenresService, SearchService, DetailsService, PopularService],
+  providers: [GenresService, SearchService, DetailsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
