@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Genres } from './model/genres.model';
-import { Movie } from '../search/model/search.model';
-import { MovieService } from '../service/movie.service';
+import { GenresState } from 'src/store/states/genres.state';
+import { Store, select } from '@ngrx/store';
+import { selectGenres } from 'src/store/selectors/genres.selectors';
+import { Observable } from 'rxjs';
+import { getGenres } from 'src/store/actions/genres.actions';
 
 @Component({
 	selector: 'app-genres',
@@ -9,11 +12,10 @@ import { MovieService } from '../service/movie.service';
 	styleUrls: ['./genres.component.scss']
 })
 export class GenresComponent implements OnInit {
-	public genresMovies: Genres[] = [];
-	public listOfMovies: Movie[];
-	constructor(private movie: MovieService) { }
+	public genres$: Observable<Genres[]> = this._store$.pipe(select(selectGenres));
+	constructor(public _store$: Store<GenresState>) { }
 
 	public ngOnInit(): void {
-		this.movie.outputGenres().subscribe((data: any) =>  this.genresMovies = data);
+		this._store$.dispatch(getGenres({}));
 	}
 }

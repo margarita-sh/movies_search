@@ -18,6 +18,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { HomeComponent } from './home/home.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { GenresEffects } from 'src/store/effects/genres.effects';
+import { reducer } from 'src/store';
 
 @NgModule({
   declarations: [
@@ -41,6 +48,10 @@ import { HomeComponent } from './home/home.component';
 	MatButtonModule,
 	MatIconModule,
 	BrowserAnimationsModule,
+	StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+	StoreModule.forRoot(reducer),
+	EffectsModule.forRoot([GenresEffects]),
+	StoreRouterConnectingModule.forRoot(),
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]
