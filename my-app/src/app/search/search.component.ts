@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from './service/search.service';
 import { Movie } from './model/search.model';
 import { Router } from '@angular/router';
+import { MovieService } from '../service/movie.service';
 
 @Component({
 	selector: 'app-search',
@@ -12,7 +12,7 @@ export class SearchComponent implements OnInit {
 	public nameMovie: string;
 	public listOfMovies: Movie[];
 
-	constructor(private searchMovies: SearchService, private router: Router) { }
+	constructor(private movie: MovieService, private router: Router) { }
 
 	// tslint:disable-next-line: no-empty
 	public ngOnInit(): void {

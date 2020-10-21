@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from '../search/model/search.model';
-import { DetailsService } from '../details/service/details.service';
 
 @Component({
 	selector: 'app-card',
@@ -11,7 +10,8 @@ export class CardComponent implements OnInit {
 	@Input() public movie: Movie;
 	public posterUrl: string;
 	public imageBaseurl: string = 'https://image.tmdb.org/t/p/w200';
-	   constructor(public details: DetailsService) { }
+	   // tslint:disable-next-line: no-empty
+	   constructor() { }
 
 	public ngOnInit(): void {
 		if (this.movie.poster_path === null) {

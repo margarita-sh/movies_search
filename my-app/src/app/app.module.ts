@@ -6,12 +6,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GenresComponent } from './genres/genres.component';
-import { GenresService } from './genres/service/genres.service';
 import { SearchComponent } from './search/search.component';
-import { SearchService } from './search/service/search.service';
+import { MovieService } from './service/movie.service';
 import { CardComponent } from './card/card.component';
 import { DetailsComponent } from './details/details.component';
-import { DetailsService } from './details/service/details.service';
 import { PopularComponent } from './popular/popular.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { A11yModule } from '@angular/cdk/a11y';
@@ -44,7 +42,7 @@ import { HomeComponent } from './home/home.component';
 	MatIconModule,
 	BrowserAnimationsModule,
   ],
-  providers: [GenresService, SearchService, DetailsService],
+  providers: [MovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

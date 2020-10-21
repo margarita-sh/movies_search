@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from '../search/service/search.service';
 import { Result, Movie } from '../search/model/search.model';
+import { MovieService } from '../service/movie.service';
 
 @Component({
 	selector: 'app-popular',
@@ -13,10 +13,10 @@ export class PopularComponent implements OnInit {
 	public listOfPopularMovies: [Result[]];
 	public sizeSubarray: number = 5;
 
-	constructor(public popularMovies: SearchService) { }
+	constructor(public movie: MovieService) { }
 
 	public ngOnInit(): void {
-		this.popularMovies.getPopularMovies().subscribe((item: Result) => {
+		this.movie.getPopularMovies().subscribe((item: Result) => {
 			this.listOfPopularMovies = item.results.reduce((acc: any, cur: Movie) => {
 				if (acc[acc.length - 1].length === this.sizeSubarray) {
 					acc.push([]);

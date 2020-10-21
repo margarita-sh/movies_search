@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { DetailsService } from './service/details.service';
 import { ActivatedRoute } from '@angular/router';
-import { DetailsModel, Videos, Result } from './model/details.model';
+import { DetailsModel, Result } from './model/details.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { MovieService } from '../service/movie.service';
 
 @Component({
 	selector: 'app-details',
@@ -14,17 +14,16 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 export class DetailsComponent implements OnInit {
 	public movieDetails$: Observable<DetailsModel>;
-/* 	public keyForVideo: string; */
 	public srcVideoFromYoutube: string = 'https://www.youtube.com/embed/';
 	public srcVideo: string;
-	public trustedUrl: any;
+	public trustedUrl: SafeResourceUrl;
 
-	constructor(public detailsService: DetailsService, private activateRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
+	constructor(public movie: MovieService, private activateRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
 
 	public ngOnInit(): void {
 		// tslint:disable-next-line: deprecation
 		this.activateRoute.queryParams.subscribe((queryParams: ActivatedRoute) => {
-			this.movieDetails$ = this.detailsService.getDetails(queryParams['movieId']);
+			this.movieDetails$ = this.movie.getDetails(queryParams['movieId']);
 			if (this.movieDetails$) {
 				this.movieDetails$.pipe(
 					map((item: DetailsModel) => {
@@ -35,6 +34,7 @@ export class DetailsComponent implements OnInit {
 				).subscribe((item: Result)  => {
 					this.srcVideo = this.srcVideoFromYoutube + item.key;
 					this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.srcVideo);
+					console.log(this.trustedUrl);
 				});
 			}
 
