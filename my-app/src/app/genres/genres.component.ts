@@ -5,7 +5,6 @@ import { Store, select } from '@ngrx/store';
 import { selectGenres } from 'src/store/selectors/genres.selectors';
 import { Observable } from 'rxjs';
 import { getGenres } from 'src/store/actions/genres.actions';
-import { getMoviesByGenres } from 'src/store/actions/movies.actions';
 
 @Component({
 	selector: 'app-genres',
@@ -19,7 +18,5 @@ export class GenresComponent implements OnInit {
 	public ngOnInit(): void {
 		this._store$.dispatch(getGenres({}));
 	}
-	public getIdGenre(id: number): void {
-		this._store$.dispatch(getMoviesByGenres({id}));
-	}
+
 }

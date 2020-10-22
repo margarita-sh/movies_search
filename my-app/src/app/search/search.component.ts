@@ -13,17 +13,11 @@ import { MoviesState } from 'src/store/states/movies.state';
 })
 export class SearchComponent implements OnInit {
 	public nameMovie: string;
-	public listOfMovies: Movie[];
 
-	constructor(private router: Router, private _store$: Store<MoviesState>)  { }
+	// tslint:disable-next-line: no-empty
+	constructor()  { }
 
 	// tslint:disable-next-line: no-empty
 	public ngOnInit(): void {
 	}
-
-	public searchMovie(query: string): void {
-		this._store$.dispatch(getMoviesFromSearch({query}));
-		this.router.navigate(['search', this.nameMovie]);
-	}
-
 }

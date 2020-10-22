@@ -5,6 +5,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { selectMovies } from 'src/store/selectors/movies.selectors';
 import { MoviesState } from 'src/store/states/movies.state';
+import { getTopMovies, getMoviesFromSearch, getMoviesByGenres } from 'src/store/actions/movies.actions';
 
 @Component({
 	selector: 'app-movie-list',
@@ -12,43 +13,30 @@ import { MoviesState } from 'src/store/states/movies.state';
 	styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit {
-	public listOfMovies: Movie[] = [];
 	public movies$: Observable<Movie[]> = this._store$.pipe(select(selectMovies));
-	/* public genres$: Observable<Genres[]> = this._store$.pipe(select(selectGenres)); */
-	/* public id: any = this.genres$.subscribe((item: Genres[])  => item.map((i: Genres) => i.id)); */
 	constructor(
-		private route: ActivatedRoute,
-/* 		private movie: MovieService, */
 		public _store$: Store<MoviesState>,
-/* 		public _storeGenres$: Store<GenresState> */
+		private activateRoute: ActivatedRoute
 	) { }
 
 	public ngOnInit(): void {
-console.log(this.route.snapshot.routeConfig.children);
+		this.activateRoute.queryParams.subscribe((queryParams: ActivatedRoute) => {
+			const movieName: string = queryParams['nameMovie'];
+			console.log('movieName', movieName);
+			const genreId: number = queryParams['genreId'];
+			console.log('genreId', genreId);
+			if (movieName !== undefined) {
+				console.log('1');
+				return this._store$.dispatch(getMoviesFromSearch({ query: movieName }));
+			} else if (genreId !== undefined) {
+				console.log('2');
+				return this._store$.dispatch(getMoviesByGenres({ id: genreId }));
+			} else {
+				console.log('3');
+				return this._store$.dispatch(getTopMovies({}));
+			}
+		});
 
-		/*  this._store$.dispatch(getMoviesByGenres({id: this.id}));  */
-		/* const routeName: string = this.route.snapshot.routeConfig.path;
-		console.log('routeName', routeName);
-		if (routeName === '') {
-			this.movie.getTopMovie().subscribe((items: Movie[]) => {
-				this.listOfMovies = items;
-			});
-		} else {
-			this.route.paramMap.subscribe((data: any) => {
-				if (routeName === 'genre/:id/:name') {
-					const genreId: number = data.params.id;
-					this.movie.searchFilmByGenres(genreId).subscribe((items: Movie[]) => {
-						this.listOfMovies = items;
-					});
-				} else if (routeName === 'search/:name') {
-					const name: string = data.params.name;
-					this.movie.searchFilm(name).subscribe((items: Movie[]) => {
-						this.listOfMovies = items;
-					});
-				}
-			});
-		}
- */
 	}
 
 }

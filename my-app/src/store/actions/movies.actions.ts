@@ -22,4 +22,5 @@ export const setMovies: TypeActionCreator<string, { movies: Movie[] }> = createA
 export const getMoviesFromSearch: TypeActionCreator<string, { query: string }> = createAction(
 	'[Get movies from search]', props<{ query: string }>());
 
-
+export const getTopMovies: TypeActionCreator<string, { }> = createAction(
+		'[Get movies from search]');
