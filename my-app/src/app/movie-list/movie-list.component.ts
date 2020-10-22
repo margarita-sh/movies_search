@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../search/model/search.model';
 import { ActivatedRoute } from '@angular/router';
-import { MovieService } from '../service/movie.service';
-import { GenresState } from 'src/store/states/genres.state';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Genres } from '../genres/model/genres.model';
-import { selectGenres } from 'src/store/selectors/genres.selectors';
+import { Observable, Subscription } from 'rxjs';
+import { selectMovies } from 'src/store/selectors/movies.selectors';
+import { MoviesState } from 'src/store/states/movies.state';
 
 @Component({
 	selector: 'app-movie-list',
@@ -15,15 +13,20 @@ import { selectGenres } from 'src/store/selectors/genres.selectors';
 })
 export class MovieListComponent implements OnInit {
 	public listOfMovies: Movie[] = [];
-	public genres$: Observable<Genres[]> = this._store$.pipe(select(selectGenres));
+	public movies$: Observable<Movie[]> = this._store$.pipe(select(selectMovies));
+	/* public genres$: Observable<Genres[]> = this._store$.pipe(select(selectGenres)); */
+	/* public id: any = this.genres$.subscribe((item: Genres[])  => item.map((i: Genres) => i.id)); */
 	constructor(
 		private route: ActivatedRoute,
-		private movie: MovieService,
-		public _store$: Store<GenresState>
+/* 		private movie: MovieService, */
+		public _store$: Store<MoviesState>,
+/* 		public _storeGenres$: Store<GenresState> */
 	) { }
 
 	public ngOnInit(): void {
+console.log(this.route.snapshot.routeConfig.children);
 
+		/*  this._store$.dispatch(getMoviesByGenres({id: this.id}));  */
 		/* const routeName: string = this.route.snapshot.routeConfig.path;
 		console.log('routeName', routeName);
 		if (routeName === '') {

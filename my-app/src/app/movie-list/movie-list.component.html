@@ -1,4 +1,4 @@
 <div>
-	<app-card *ngFor="let movie of listOfMovies"  [movie]="movie"></app-card>
+	<app-card *ngFor="let movie of movies$ | async"  [movie]="movie"></app-card>
 </div>
 

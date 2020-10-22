@@ -25,6 +25,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { GenresEffects } from 'src/store/effects/genres.effects';
 import { reducer } from 'src/store';
+import { MoviesEffects } from 'src/store/effects/movies.effects';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { reducer } from 'src/store';
 	BrowserAnimationsModule,
 	StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
 	StoreModule.forRoot(reducer),
-	EffectsModule.forRoot([GenresEffects]),
+	EffectsModule.forRoot([GenresEffects, MoviesEffects]),
 	StoreRouterConnectingModule.forRoot(),
   ],
   providers: [MovieService],

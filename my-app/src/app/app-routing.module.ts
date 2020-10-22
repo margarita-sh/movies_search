@@ -5,15 +5,19 @@ import { DetailsComponent } from './details/details.component';
 import { GenresComponent } from './genres/genres.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { CardComponent } from './card/card.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
- /* 	{ path: '', component: SearchComponent }, */
-   { path: 'movies', component: CardComponent },
-	{ path: 'genre', component: GenresComponent },
-	{ path: 'movie-detail', component: DetailsComponent },
-	{ path: '', component: MovieListComponent },
-	{ path: 'genre/:id/:name', component: MovieListComponent },
-	{ path: 'search/:name', component: MovieListComponent },
+/*     { path: '', component: HomeComponent }, */
+    //{ path: 'movie/:id', component: CardComponent },
+	//{ path: 'genre', component: GenresComponent },
+	{ path: 'movie-detail/:id', component: DetailsComponent },
+	{ path: '', component: MovieListComponent, children:[
+		{ path: 'genre/:id/:name', component: MovieListComponent },
+		{ path: 'search/:name', component: MovieListComponent },
+	] },
+/* 	{ path: 'genre/:id/:name', component: MovieListComponent },
+	{ path: 'search/:name', component: MovieListComponent }, */
 	{ path: '**"', redirectTo: '/', pathMatch: 'full' }
   ];
 

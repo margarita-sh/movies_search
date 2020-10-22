@@ -1,4 +1,4 @@
-	<div *ngFor="let genre of genres$ | async"  [routerLink]="['genre', genre.id, genre.name]" class="app-genres--item">
+	<div *ngFor="let genre of genres$ | async"  (click)="getIdGenre(genre.id)" [routerLink]="['genre', genre.id, genre.name]" class="app-genres--item">
 		<span>{{genre.name}}</span>
 	</div>
 	

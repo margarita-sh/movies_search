@@ -3,7 +3,7 @@ import { Genres } from 'src/app/genres/model/genres.model';
 import { TypedAction } from '@ngrx/store/src/models';
 
 type TypeActionCreator<S extends string, O extends object> = ActionCreator<
-	S, (props: O ) => & TypedAction<S>
+	S, (props: O) => & TypedAction<S>
 >;
 
 export interface GenresActionProps extends Action {

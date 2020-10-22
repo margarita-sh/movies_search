@@ -14,7 +14,6 @@ export class GenresEffects {
 			mergeMap(() => this.movieService.outputGenres()
 				.pipe(
 					map((genres: any) => {
-						console.log('effect', genres);
 						return setGenres({ genres });
 					})
 				)

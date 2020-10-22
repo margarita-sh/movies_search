@@ -1,2 +1,2 @@
 <input type="text" [(ngModel)] = "nameMovie" placeholder="Search for movies..."> 
-<button [routerLink]="['search', nameMovie]">Search</button>
+<button (click) = "searchMovie(nameMovie)"[routerLink]="['search', nameMovie]">Search</button>
