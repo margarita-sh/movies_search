@@ -11,8 +11,8 @@ import { MovieService } from './service/movie.service';
 import { CardComponent } from './card/card.component';
 import { DetailsComponent } from './details/details.component';
 import { PopularComponent } from './popular/popular.component';
-import { MatCarouselModule } from '@ngmodule/material-carousel';
-import { A11yModule } from '@angular/cdk/a11y';
+/* import { MatCarouselModule } from '@ngmodule/material-carousel'; */
+/* import { A11yModule } from '@angular/cdk/a11y'; */
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +26,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { GenresEffects } from 'src/store/effects/genres.effects';
 import { reducer } from 'src/store';
 import { MoviesEffects } from 'src/store/effects/movies.effects';
+import { CarouselModule } from 'primeng/carousel';
+import {RatingModule} from 'primeng/rating';
 
 @NgModule({
   declarations: [
@@ -44,11 +46,13 @@ import { MoviesEffects } from 'src/store/effects/movies.effects';
  	CommonModule,
 	FormsModule,
 	HttpClientModule,
-	MatCarouselModule.forRoot(),
-	A11yModule,
+/* 	MatCarouselModule.forRoot(), */
+/* 	A11yModule, */
 	MatButtonModule,
 	MatIconModule,
 	BrowserAnimationsModule,
+	CarouselModule,
+	RatingModule,
 	StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
 	StoreModule.forRoot(reducer),
 	EffectsModule.forRoot([GenresEffects, MoviesEffects]),

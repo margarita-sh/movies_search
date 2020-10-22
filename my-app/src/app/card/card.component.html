@@ -6,6 +6,8 @@
 </div>
 	 <div class="app-card--information" >
 		 <h3>{{ movie.title }}</h3> 
+		<!--  <p-rating [(ngModel)]="movie.vote_average"></p-rating> -->
+		<p-rating [ngModel]="movie.vote_average" readonly="true" stars="10" [cancel]="false"></p-rating>
 		 <p>{{ movie.overview }}</p>
 		 <p><strong>Average vote: </strong>{{ movie.vote_average }}</p>
          <p><strong>Date of release: </strong>{{ movie.release_date }}</p>

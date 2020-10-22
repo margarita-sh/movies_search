@@ -16,7 +16,7 @@ export class PopularComponent implements OnInit {
 	constructor(public movie: MovieService) { }
 
 	public ngOnInit(): void {
-		this.movie.getPopularMovies().subscribe((item: Result) => {
+		/* this.movie.getPopularMovies().subscribe((item: Result) => {
 			this.listOfPopularMovies = item.results.reduce((acc: any, cur: Movie) => {
 				if (acc[acc.length - 1].length === this.sizeSubarray) {
 					acc.push([]);
@@ -25,7 +25,7 @@ export class PopularComponent implements OnInit {
 				return acc;
 
 			}, [[]]);
-		});
+		}); */
 
 }
 
