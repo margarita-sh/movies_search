@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from '../search/model/search.model';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../service/movie.service';
+import { GenresState } from 'src/store/states/genres.state';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Genres } from '../genres/model/genres.model';
+import { selectGenres } from 'src/store/selectors/genres.selectors';
 
 @Component({
 	selector: 'app-movie-list',
@@ -10,13 +15,16 @@ import { MovieService } from '../service/movie.service';
 })
 export class MovieListComponent implements OnInit {
 	public listOfMovies: Movie[] = [];
+	public genres$: Observable<Genres[]> = this._store$.pipe(select(selectGenres));
 	constructor(
 		private route: ActivatedRoute,
 		private movie: MovieService,
+		public _store$: Store<GenresState>
 	) { }
 
 	public ngOnInit(): void {
-		const routeName: string = this.route.snapshot.routeConfig.path;
+
+		/* const routeName: string = this.route.snapshot.routeConfig.path;
 		console.log('routeName', routeName);
 		if (routeName === '') {
 			this.movie.getTopMovie().subscribe((items: Movie[]) => {
@@ -37,7 +45,7 @@ export class MovieListComponent implements OnInit {
 				}
 			});
 		}
-
+ */
 	}
 
 }

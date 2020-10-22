@@ -12,6 +12,6 @@ const genresReducer: ActionReducer<GenresState, Action> = createReducer(
 	})
 );
 
-export function StateReducerGenres(state: GenresState, action: Action): GenresState {
+export function StateReducerGenres(state: GenresState | undefined, action: Action): GenresState {
 	return genresReducer(state, action);
 }
