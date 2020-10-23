@@ -20,23 +20,24 @@ export class MovieListComponent implements OnInit {
 	) { }
 
 	public ngOnInit(): void {
-		this.activateRoute.queryParams.subscribe((queryParams: ActivatedRoute) => {
+	this.activateRoute.queryParams.subscribe((queryParams: ActivatedRoute) => {
 			const movieName: string = queryParams['nameMovie'];
-			console.log('movieName', movieName);
 			const genreId: number = queryParams['genreId'];
-			console.log('genreId', genreId);
 			if (movieName !== undefined) {
-				console.log('1');
 				return this._store$.dispatch(getMoviesFromSearch({ query: movieName }));
 			} else if (genreId !== undefined) {
-				console.log('2');
 				return this._store$.dispatch(getMoviesByGenres({ id: genreId }));
 			} else {
-				console.log('3');
 				return this._store$.dispatch(getTopMovies({}));
 			}
 		});
-
+	/* 	this.activateRoute.params.subscribe(params=>console.log(params)
+		);
+		console.log(this.activateRoute.children);
+		this.activateRoute.firstChild.params.subscribe(
+            (params: any) => {
+				console.log(params)
+            }); */
 	}
 
 }

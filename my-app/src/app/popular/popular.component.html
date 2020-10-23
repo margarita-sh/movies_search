@@ -1,20 +1,12 @@
-<!-- <mat-carousel
-  timings="250ms ease-in"
-  [autoplay]="true"
-  interval="6000"
-  [loop]="false"
-  [hideArrows]="false"
-  [hideIndicators]="false"
-  [useKeyboard]="true"
-  [useMouseWheel]="true"
-  [maintainAspectRatio] = "false"
-  slideHeight = "231px"
-  svgIconOverrides="true"
-  maxWidth = "870px">
-  <mat-carousel-slide *ngFor = "let movies of listOfPopularMovies">
-    <div *ngFor = "let movie of movies" class="app-popular--img-container" routerLink="/movie-detail" 
-	[queryParams]="{ movieId: movie.id }">
-		<img src="https://image.tmdb.org/t/p/w154{{movie.poster_path}}" alt="poster" class="app-popular--img">
-	</div>
-  </mat-carousel-slide>
-</mat-carousel>  -->
+<p-carousel [value]="movies"  [numVisible]="6" [numScroll]="4"
+	[responsiveOptions]="responsiveOptions">
+	<ng-template let-movie pTemplate="item">
+		<div class="app-popular--img-container" routerLink="/movie-detail" [queryParams]="{ movieId: movie.id }">
+			<img *ngIf="movie?.poster_path"
+				src="https://image.tmdb.org/t/p/w154{{movie?.poster_path}}">
+			<img *ngIf="!movie?.poster_path" src="assets/img/img-not-found.png">
+			<h6>{{ movie?.title }}</h6>
+<!-- 			<p class="rate"><i class="material-icons">star</i><span>{{movie?.vote_average}}</span> /10</p> -->
+		</div>
+	</ng-template>
+</p-carousel>
