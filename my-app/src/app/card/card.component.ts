@@ -9,7 +9,7 @@ import { Movie } from '../search/model/search.model';
 export class CardComponent implements OnInit {
 	@Input() public movie: Movie;
 	public posterUrl: string;
-	public imageBaseurl: string = 'https://image.tmdb.org/t/p/w200';
+	public imageBaseurl: string = 'https://image.tmdb.org/t/p/w300';
 	   // tslint:disable-next-line: no-empty
 	   constructor() { }
 

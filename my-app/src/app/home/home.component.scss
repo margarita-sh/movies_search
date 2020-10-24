@@ -1,5 +1,15 @@
 .app-home {
+	width: 1600px;
+	margin:auto;
+	
 	&--content {
 		display:flex;
+
+		&-genres {
+			width: 30%;
+		}
+		&-movie {
+			width: 70%;
+		}
 	}
 }

@@ -1,12 +1,14 @@
+<div class="app-popular">
 <p-carousel [value]="movies"  [numVisible]="6" [numScroll]="4"
 	[responsiveOptions]="responsiveOptions">
 	<ng-template let-movie pTemplate="item">
 		<div class="app-popular--img-container" routerLink="/movie-detail" [queryParams]="{ movieId: movie.id }">
 			<img *ngIf="movie?.poster_path"
-				src="https://image.tmdb.org/t/p/w154{{movie?.poster_path}}">
+				src="https://image.tmdb.org/t/p/w200{{movie?.poster_path}}">
 			<img *ngIf="!movie?.poster_path" src="assets/img/img-not-found.png">
-			<h6>{{ movie?.title }}</h6>
-<!-- 			<p class="rate"><i class="material-icons">star</i><span>{{movie?.vote_average}}</span> /10</p> -->
+			<h6 class="app-popular--title-movie">{{ movie?.title | sliceString }}</h6>
+ 			<p class="app-popular--rate"><i class="material-icons app-popular--star">star</i><span>{{movie?.vote_average}}</span>/10</p>
 		</div>
 	</ng-template>
 </p-carousel>
+</div>

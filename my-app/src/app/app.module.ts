@@ -28,6 +28,8 @@ import { reducer } from 'src/store';
 import { MoviesEffects } from 'src/store/effects/movies.effects';
 import { CarouselModule } from 'primeng/carousel';
 import {RatingModule} from 'primeng/rating';
+import { DatePipe } from './pipe/data.pipe';
+import { SliceStringPipe } from './pipe/sliceString.pipe';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import {RatingModule} from 'primeng/rating';
 	PopularComponent,
 	MovieListComponent,
 	HomeComponent,
+	DatePipe,
+	SliceStringPipe
   ],
   imports: [
 	BrowserModule,

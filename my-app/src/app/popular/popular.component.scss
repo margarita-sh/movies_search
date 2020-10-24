@@ -1,8 +1,6 @@
-/* .app-popular {
-	display: flex;
-	border: 5px solid purple;
-	width:auto;
-
+@import '../../assets/style/variables.scss';
+ 
+/* 
 	&--img-container{
 	display: inline;
 	margin:10px;
@@ -10,8 +8,8 @@
 	}
 	&--img-container:hover{
 		opacity: 1;
-		} */
-	/* 
+		}
+	
 	&--img-container:after { 
 		content: ''; 
 		position: absolute; 
@@ -26,13 +24,38 @@
 		 opacity: 1; 
 		}  
 }
-*/
+
 .app-popular--img-container {
-	background-color: #212121;
-  /*   border: 1px solid rgba(255, 255, 255, 0.1);
+     border: 1px solid rgba(255, 255, 255, 0.1);
     color: white;
     border-radius: 5px;
     margin: 11px 5px 11px;
     position: relative;
-    cursor: pointer; */
+    cursor: pointer; 
+}
+ */
+
+.app-popular {
+width:100%;
+margin:1rem;
+font-family: $font-family--sans-serif;
+
+&--img-container {
+text-align: center;
+height: 100%;
+}
+
+&--title-movie {
+	font-size: $title-font-size; 
+	margin: 1rem;
+	height: 3rem;
+}
+
+ &--star {
+	color: $third-color;
+}
+&--rate {
+	font-size: $title-font-size;
+	margin:0;
+} 
 }
