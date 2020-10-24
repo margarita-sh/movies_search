@@ -4,12 +4,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 	name: 'sliceString'
 })
 export class SliceStringPipe implements PipeTransform {
-
+public maxLength: number = 40;
 	public transform(value: string): string {
+		// tslint:disable-next-line: strict-boolean-expressions
 		if (value) {
-			if (value.length > 40) {
-				return value.slice(0, 40) + '...';
-			}else{
+			if (value.length > this.maxLength) {
+				return value.slice(0, this.maxLength) + '...';
+			} else {
 				return value;
 			}
 		}

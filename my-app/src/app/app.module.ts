@@ -11,8 +11,6 @@ import { MovieService } from './service/movie.service';
 import { CardComponent } from './card/card.component';
 import { DetailsComponent } from './details/details.component';
 import { PopularComponent } from './popular/popular.component';
-/* import { MatCarouselModule } from '@ngmodule/material-carousel'; */
-/* import { A11yModule } from '@angular/cdk/a11y'; */
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,9 +25,10 @@ import { GenresEffects } from 'src/store/effects/genres.effects';
 import { reducer } from 'src/store';
 import { MoviesEffects } from 'src/store/effects/movies.effects';
 import { CarouselModule } from 'primeng/carousel';
-import {RatingModule} from 'primeng/rating';
+import { RatingModule } from 'primeng/rating';
 import { DatePipe } from './pipe/data.pipe';
 import { SliceStringPipe } from './pipe/sliceString.pipe';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -57,6 +56,7 @@ import { SliceStringPipe } from './pipe/sliceString.pipe';
 	BrowserAnimationsModule,
 	CarouselModule,
 	RatingModule,
+	InputTextModule,
 	StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
 	StoreModule.forRoot(reducer),
 	EffectsModule.forRoot([GenresEffects, MoviesEffects]),

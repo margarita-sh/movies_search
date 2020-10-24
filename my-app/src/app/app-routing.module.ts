@@ -26,7 +26,9 @@ const routes: Routes = [
 			{ path: 'genre/:id/:name', component: MovieListComponent },
 			{ path: 'search/:name', component: MovieListComponent },
 		]},
-	]}
+	]},
+	{ path: 'movie-detail', component: DetailsComponent },
+	{ path: '**"', redirectTo: '/', pathMatch: 'full' }
 ];
 
 @NgModule({

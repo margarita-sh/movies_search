@@ -1,10 +1,17 @@
 .app-details {
+	width:1600px;
 	border:1px solid red;
 
 	&--container {
 		display:flex;
 	}
 	&--info {
-		margin-left:10px;
+		margin-left:1rem;
 	}
+
+	&--comma:not(:last-child):after {
+		content: ',';
+		} 
+	
+	
 }

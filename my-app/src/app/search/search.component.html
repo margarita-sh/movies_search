@@ -1,3 +1,7 @@
-<input type="text" [(ngModel)] = "nameMovie" placeholder="Search for movies..."> 
-<button [routerLink]="['search', nameMovie]" [queryParams]="{ nameMovie: nameMovie }">Search</button>
-
+<div class="app-search">
+<span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+	<input type="text" pInputText [(ngModel)]="nameMovie" placeholder="Search" [routerLink]="['search', nameMovie]" [queryParams]="{ nameMovie: nameMovie }" class="app-search--input">   
+	<!-- <button [routerLink]="['search', nameMovie]" [queryParams]="{ nameMovie: nameMovie }" (keyup.enter)="addInput()">Search</button>    -->   
+</span>
+</div>
