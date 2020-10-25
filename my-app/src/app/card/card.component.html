@@ -7,7 +7,7 @@
 			<h3>{{ movie.title }}</h3>
 			<p-rating [ngModel]="movie.vote_average" readonly="true" stars="10" [cancel]="false"></p-rating>
 			<p>{{ movie.overview }}</p>
-			<p><strong>Average vote: </strong>{{ movie.vote_average }}</p>
+			<p><strong>Average vote: </strong>{{ movie.vote_average }}/10</p>
 			<p><strong>Date of release: </strong>{{ movie.release_date | fullDate}}</p>
 			<p><strong>Popularity: </strong>{{ movie.popularity }}</p>
 			<p><strong>Votes: </strong>{{ movie.vote_count }}</p>

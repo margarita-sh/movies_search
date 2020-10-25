@@ -21,10 +21,11 @@ const routes: Routes = [
 	{path: '', component: HomeComponent,  children: [
 		{path: '', component: SearchComponent},
 		{path: '', component: PopularComponent},
-		{path: '', component: GenresComponent},
+ 		{path: '', component: GenresComponent},
 		{path: '', component: MovieListComponent, children: [
 			{ path: 'genre/:id/:name', component: MovieListComponent },
 			{ path: 'search/:name', component: MovieListComponent },
+	/* 		{ path: 'movie-detail', component: DetailsComponent }, */
 		]},
 	]},
 	{ path: 'movie-detail', component: DetailsComponent },

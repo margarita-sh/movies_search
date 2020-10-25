@@ -1,6 +1,11 @@
+@import '../../assets/style/variables.scss';
+
 .app-details {
-	width:1600px;
-	border:1px solid red;
+	border:1px solid darkgreen;
+	width:1600px; 
+	padding:2rem;
+	margin:5rem auto;
+	font-size: $base-font-size;
 
 	&--container {
 		display:flex;
@@ -9,9 +14,24 @@
 		margin-left:1rem;
 	}
 
-	&--comma:not(:last-child):after {
-		content: ',';
-		} 
-	
-	
+	&--comma {
+		margin-left: 1rem;
+	  
+		&:not(:last-child):after {
+		  content: ',';
+		}
+	  }
+
+	&--star {
+		color: $third-color;
+	}
+	&--video {
+		margin:5rem;
+		display:flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&--margin-string {
+		margin:1rem;
+	}
 }
