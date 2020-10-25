@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from '../search/model/search.model';
 import { ActivatedRoute } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import { Observable} from 'rxjs';
 import { selectMovies } from 'src/store/selectors/movies.selectors';
 import { MoviesState } from 'src/store/states/movies.state';
 import { getTopMovies, getMoviesFromSearch, getMoviesByGenres } from 'src/store/actions/movies.actions';

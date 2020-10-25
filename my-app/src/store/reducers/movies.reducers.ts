@@ -9,6 +9,12 @@ const moviesReducer: ActionReducer<MoviesState, Action> = createReducer(
 			...state,
 			movies: action.movies
 		});
+	}),
+	on(MoviesAction.setMoviesDetails, (state: MoviesState, action: MoviesAction.MoviesActionProps ): MoviesState => {
+		return ({
+			...state,
+			movie: action.movie
+		});
 	})
 );
 
