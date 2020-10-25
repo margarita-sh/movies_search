@@ -14,13 +14,19 @@ import { getTopMovies, getMoviesFromSearch, getMoviesByGenres } from 'src/store/
 })
 export class MovieListComponent implements OnInit {
 	public movies$: Observable<Movie[]> = this._store$.pipe(select(selectMovies));
+	public movieDetails: number;
 	constructor(
 		public _store$: Store<MoviesState>,
 		private activateRoute: ActivatedRoute
 	) { }
 
 	public ngOnInit(): void {
-	this.activateRoute.queryParams.subscribe((queryParams: ActivatedRoute) => {
+		this.activateRoute.queryParams.subscribe((queryParams: ActivatedRoute) => {
+			console.log('queryParams', queryParams);
+			const movieId: number = queryParams['movieId'];
+			if (movieId !== undefined) {
+				this.movieDetails = movieId;
+			}
 			const movieName: string = queryParams['nameMovie'];
 			const genreId: number = queryParams['genreId'];
 			if (movieName !== undefined) {
@@ -31,13 +37,6 @@ export class MovieListComponent implements OnInit {
 				return this._store$.dispatch(getTopMovies({}));
 			}
 		});
-	/* 	this.activateRoute.params.subscribe(params=>console.log(params)
-		);
-		console.log(this.activateRoute.children);
-		this.activateRoute.firstChild.params.subscribe(
-            (params: any) => {
-				console.log(params)
-            }); */
 	}
 
 }

@@ -29,6 +29,7 @@ import { RatingModule } from 'primeng/rating';
 import { DatePipe } from './pipe/data.pipe';
 import { SliceStringPipe } from './pipe/sliceString.pipe';
 import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { InputTextModule } from 'primeng/inputtext';
 	MovieListComponent,
 	HomeComponent,
 	DatePipe,
-	SliceStringPipe
+	SliceStringPipe,
   ],
   imports: [
 	BrowserModule,
@@ -49,13 +50,12 @@ import { InputTextModule } from 'primeng/inputtext';
  	CommonModule,
 	FormsModule,
 	HttpClientModule,
-/* 	MatCarouselModule.forRoot(), */
-/* 	A11yModule, */
 	MatButtonModule,
 	MatIconModule,
 	BrowserAnimationsModule,
 	CarouselModule,
 	RatingModule,
+	ButtonModule,
 	InputTextModule,
 	StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
 	StoreModule.forRoot(reducer),

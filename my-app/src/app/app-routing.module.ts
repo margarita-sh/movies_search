@@ -5,9 +5,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { PopularComponent } from './popular/popular.component';
-import { GenresEffects } from 'src/store/effects/genres.effects';
 import { GenresComponent } from './genres/genres.component';
-import { combineAll } from 'rxjs/operators';
 
 const routes: Routes = [
 	/* { path: 'movie-detail/:id', component: DetailsComponent },
@@ -25,10 +23,10 @@ const routes: Routes = [
 		{path: '', component: MovieListComponent, children: [
 			{ path: 'genre/:id/:name', component: MovieListComponent },
 			{ path: 'search/:name', component: MovieListComponent },
-	/* 		{ path: 'movie-detail', component: DetailsComponent }, */
+	 		{ path: 'movie-detail', component: DetailsComponent },
 		]},
 	]},
-	{ path: 'movie-detail', component: DetailsComponent },
+	/* { path: 'movie-detail', component: DetailsComponent }, */
 	{ path: '**"', redirectTo: '/', pathMatch: 'full' }
 ];
 

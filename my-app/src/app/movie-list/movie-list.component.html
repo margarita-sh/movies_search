@@ -1,4 +1,8 @@
 <div>
 	<app-card *ngFor="let movie of movies$ | async"  [movie]="movie"></app-card>
-</div>
+</div> 
+
+<ng-template *ngIf = "movieDetails">
+	<app-details></app-details>
+</ng-template>
 
