@@ -31,7 +31,8 @@ public getTopMovie(): Observable<Movie[]> {
 }
 
 public getPopularMovies(): Observable<any> {
-	return this._http.get(`${this.url}movie/popular?api_key=${this._mykey}&language=en-US&page=1`);
+	return this._http.get(`${this.url}movie/popular?api_key=${this._mykey}&language=en-US&page=1`).pipe(
+		map((item: Result) => item.results));
 }
 
 public getDetails(movie_id: number): Observable<any> {

@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  // tslint:disable-next-line: no-empty
-  constructor() { }
 
   // tslint:disable-next-line: no-empty
   public ngOnInit(): void {
