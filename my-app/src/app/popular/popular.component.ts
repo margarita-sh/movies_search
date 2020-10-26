@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Result, Movie } from '../search/model/search.model';
 import { MovieService } from '../service/movie.service';
+import { Store, select } from '@ngrx/store';
+import { MoviesState } from 'src/store/states/movies.state';
+import { getPopularMovies } from 'src/store/actions/movies.actions';
+import { selectMoviesPopular } from 'src/store/selectors/movies.selectors';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'app-popular',
@@ -8,8 +13,8 @@ import { MovieService } from '../service/movie.service';
 	styleUrls: ['./popular.component.scss']
 })
 export class PopularComponent implements OnInit {
-
-	public movies: Movie[];
+	public moviesPopular$: Observable<Movie[]> = this._store$.pipe(select(selectMoviesPopular));
+	// public movies: Movie[];
 	public responsiveOptions: any = [
 		{
 			breakpoint: '1024px',
@@ -27,12 +32,15 @@ export class PopularComponent implements OnInit {
 			numScroll: 1
 		}
 	];
-	constructor(public movieService: MovieService) { }
+	constructor(public movieService: MovieService, public _store$: Store<MoviesState>) { }
 	public ngOnInit(): void {
-		this.movieService.getPopularMovies().subscribe((item: Result) => {
+		/* this.movieService.getPopularMovies().subscribe((item: Result) => {
 			this.movies = item.results ;
-		});
-
+		}); */
+		/* this.movieService.getPopularMovies().subscribe((item: Movie[]) => {
+			this.movies = item;
+		}); */
+		this._store$.dispatch(getPopularMovies({}));
 	}
 
 }

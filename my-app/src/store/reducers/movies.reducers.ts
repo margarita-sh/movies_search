@@ -15,6 +15,12 @@ const moviesReducer: ActionReducer<MoviesState, Action> = createReducer(
 			...state,
 			movie: action.movie
 		});
+	}),
+	on(MoviesAction.setPopularMovies, (state: MoviesState, action: MoviesAction.MoviesActionProps ): MoviesState => {
+		return ({
+			...state,
+			moviesPopular: action.moviesPopular
+		});
 	})
 );
 

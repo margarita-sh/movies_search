@@ -31,7 +31,7 @@ export class DetailsComponent implements OnInit {
 	 	this.activateRoute.queryParams.subscribe((queryParams: ActivatedRoute) => {
 			const movieId: number = queryParams['movieId'];
 			 console.log('queryParams-movieIdj', movieId);
-		this._store$.dispatch(getMoviesDetails({ idMovie: movieId }));
+			this._store$.dispatch(getMoviesDetails({ idMovie: movieId }));
 			/*this.movieDetails$ = this.movie.getDetails(queryParams['movieId']);
 			if (this.movieDetails$) {
 				this.movieDetails$.pipe(

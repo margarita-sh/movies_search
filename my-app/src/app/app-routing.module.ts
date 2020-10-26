@@ -23,10 +23,10 @@ const routes: Routes = [
 		{path: '', component: MovieListComponent, children: [
 			{ path: 'genre/:id/:name', component: MovieListComponent },
 			{ path: 'search/:name', component: MovieListComponent },
-	 	/* 	{ path: 'movie-detail', component: DetailsComponent }, */
+	 	 	{ path: 'movie-detail', component: DetailsComponent },
 		]},
 	]},
-	{ path: 'movie-detail', component: DetailsComponent },
+/* 	{ path: 'movie-detail', component: DetailsComponent }, */
 	{ path: '**"', redirectTo: '/', pathMatch: 'full' }
 ];
 

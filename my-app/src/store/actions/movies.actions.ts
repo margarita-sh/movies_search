@@ -15,6 +15,7 @@ export interface MoviesActionProps extends Action {
 	// idMovie: Movie['id'];
 	idMovie: number;
 	movie: DetailsModel;
+	moviesPopular: Movie[];
 }
 
 export const getMoviesByGenres: TypeActionCreator<string, { id: Genres['id'] }> = createAction(
@@ -34,3 +35,9 @@ export const getMoviesDetails: TypeActionCreator<string, { idMovie: number }> = 
 
 export const setMoviesDetails: TypeActionCreator<string, {movie: DetailsModel}> = createAction(
 	'[Set MovieDetails from API]', props<{ movie: DetailsModel }>());
+
+export const getPopularMovies: TypeActionCreator<string, { }> = createAction(
+	'[Get Popular Movies from API]');
+
+export const setPopularMovies: TypeActionCreator<string, {moviesPopular: Movie[]}> = createAction(
+	'[Set Popular Movie from API]', props<{ moviesPopular: Movie[]}>());
