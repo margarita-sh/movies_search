@@ -14,7 +14,6 @@ import { Observable } from 'rxjs';
 })
 export class PopularComponent implements OnInit {
 	public moviesPopular$: Observable<Movie[]> = this._store$.pipe(select(selectMoviesPopular));
-	// public movies: Movie[];
 	public responsiveOptions: any = [
 		{
 			breakpoint: '1024px',
@@ -34,12 +33,6 @@ export class PopularComponent implements OnInit {
 	];
 	constructor(public movieService: MovieService, public _store$: Store<MoviesState>) { }
 	public ngOnInit(): void {
-		/* this.movieService.getPopularMovies().subscribe((item: Result) => {
-			this.movies = item.results ;
-		}); */
-		/* this.movieService.getPopularMovies().subscribe((item: Movie[]) => {
-			this.movies = item;
-		}); */
 		this._store$.dispatch(getPopularMovies({}));
 	}
 
