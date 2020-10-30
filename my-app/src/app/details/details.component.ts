@@ -17,15 +17,13 @@ import { selectMovie, selectMoviesVideoKey } from 'src/store/selectors/movies.se
 })
 
 export class DetailsComponent implements OnInit {
-/* 	public movieDetails$: Observable<DetailsModel>; */
 	public srcVideoFromYoutube: string = 'https://www.youtube.com/embed/';
 	public srcVideo: string;
 	public trustedUrl: SafeResourceUrl;
-/* 	public _store$: Store<MoviesState>; */
 	public movieDetails$: Observable<DetailsModel> = this._store$.pipe(select(selectMovie));
 	public selectMoviesVideoKey$: Observable<DetailsModel> = this._store$.pipe(select(selectMoviesVideoKey));
 
-	constructor(/* public movie: MovieService */ private activateRoute: ActivatedRoute,
+	constructor(private activateRoute: ActivatedRoute,
 		 private sanitizer: DomSanitizer, public _store$: Store<MoviesState>) { }
 	public ngOnInit(): void {
 
@@ -33,25 +31,9 @@ export class DetailsComponent implements OnInit {
 			const movieId: number = queryParams['movieId'];
 			this._store$.dispatch(getMoviesDetails({ idMovie: movieId }));
 			this.selectMoviesVideoKey$.subscribe((item: any)  => {
-				console.log(item, 'item!!!!!!!!!!!!!');
 				this.srcVideo = this.srcVideoFromYoutube + item.key;
 				this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.srcVideo);
 			});
-			/*this.movieDetails$ = this.movie.getDetails(queryParams['movieId']);
-			/* if (this.movieDetails$) { 
-				this.movieDetails$.pipe(
-					map((item: DetailsModel) => {
-						console.log(item);
-						return item.videos.results.find((data: Result) => {
-							return data.key;
-						});
-					})
-				).subscribe((item: Result)  => {
-					this.srcVideo = this.srcVideoFromYoutube + item.key;
-					this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.srcVideo);
-				});
-		/* 	}
-		}); */
 	 });
 }
 }

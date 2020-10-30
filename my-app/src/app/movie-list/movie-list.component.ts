@@ -22,7 +22,6 @@ export class MovieListComponent implements OnInit {
 
 	public ngOnInit(): void {
 		this.activateRoute.queryParams.subscribe((queryParams: ActivatedRoute) => {
-			console.log('queryParams!!!!', queryParams);
 			const movieId: number = queryParams['movieId'];
 			if (movieId !== undefined) {
 				this.movieDetails = true;
@@ -40,7 +39,3 @@ export class MovieListComponent implements OnInit {
 	}
 
 }
-
-/*  else if (movieId !== undefined) {
-				return this._store$.dispatch(getMoviesDetails({ idMovie: movieId }));
-			}  */
