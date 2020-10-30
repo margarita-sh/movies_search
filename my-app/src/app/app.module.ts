@@ -29,6 +29,7 @@ import { DatePipe } from './pipe/data.pipe';
 import { SliceStringPipe } from './pipe/sliceString.pipe';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { ButtonModule } from 'primeng/button';
 	RatingModule,
 	ButtonModule,
 	InputTextModule,
+	MatPaginatorModule,
 	StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
 	StoreModule.forRoot(reducer),
 	EffectsModule.forRoot([GenresEffects, MoviesEffects]),

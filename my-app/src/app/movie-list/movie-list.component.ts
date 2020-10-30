@@ -33,7 +33,8 @@ export class MovieListComponent implements OnInit {
 			} else if (genreId !== undefined) {
 				return this._store$.dispatch(getMoviesByGenres({ id: genreId }));
 			} else {
-				return this._store$.dispatch(getTopMovies({}));
+				console.log('component dispatch');
+				return this._store$.dispatch(getTopMovies({ page: 1}));
 			}
 		});
 	}

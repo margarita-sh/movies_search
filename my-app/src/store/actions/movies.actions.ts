@@ -12,10 +12,10 @@ export interface MoviesActionProps extends Action {
 	movies: Movie[];
 	id: Genres['id'];
 	query: string;
-	// idMovie: Movie['id'];
 	idMovie: number;
 	movie: DetailsModel;
 	moviesPopular: Movie[];
+	page: number;
 }
 
 export const getMoviesByGenres: TypeActionCreator<string, { id: Genres['id'] }> = createAction(
@@ -27,8 +27,8 @@ export const setMovies: TypeActionCreator<string, { movies: Movie[] }> = createA
 export const getMoviesFromSearch: TypeActionCreator<string, { query: string }> = createAction(
 	'[Get movies from search]', props<{ query: string }>());
 
-export const getTopMovies: TypeActionCreator<string, {}> = createAction(
-	'[Get TOP movies from API]');
+export const getTopMovies: TypeActionCreator<string, { page: number }> = createAction(
+	'[Get TOP movies from API]', props<{ page: number }>());
 
 export const getMoviesDetails: TypeActionCreator<string, { idMovie: number }> = createAction(
 	'[Get MovieDetails from API]', props<{ idMovie: number }>());

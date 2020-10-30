@@ -4,6 +4,7 @@ import { DetailsComponent } from './details/details.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 
 const routes: Routes = [
+ 	{ path: '', component: MovieListComponent }, // here add path
 	{ path: 'genre', component: MovieListComponent },
 	{ path: 'search', component: MovieListComponent },
 	{ path: 'movie-detail', component: DetailsComponent },

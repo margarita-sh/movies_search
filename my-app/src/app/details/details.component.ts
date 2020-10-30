@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DetailsModel, Result } from './model/details.model';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable} from 'rxjs';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { MovieService } from '../service/movie.service';
 import { Store, select } from '@ngrx/store';
 import { MoviesState } from 'src/store/states/movies.state';
 import { getMoviesDetails } from 'src/store/actions/movies.actions';
@@ -31,8 +29,11 @@ export class DetailsComponent implements OnInit {
 			const movieId: number = queryParams['movieId'];
 			this._store$.dispatch(getMoviesDetails({ idMovie: movieId }));
 			this.selectMoviesVideoKey$.subscribe((item: any)  => {
-				this.srcVideo = this.srcVideoFromYoutube + item.key;
-				this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.srcVideo);
+				if (item) {
+					this.srcVideo = this.srcVideoFromYoutube + item.key;
+					this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.srcVideo);
+				}
+
 			});
 	 });
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Result, Movie } from '../search/model/search.model';
+import { Movie } from '../search/model/search.model';
 import { MovieService } from '../service/movie.service';
 import { Store, select } from '@ngrx/store';
 import { MoviesState } from 'src/store/states/movies.state';
@@ -31,7 +31,7 @@ export class PopularComponent implements OnInit {
 			numScroll: 1
 		}
 	];
-	constructor(public movieService: MovieService, public _store$: Store<MoviesState>) { }
+	constructor(public _store$: Store<MoviesState>) { }
 	public ngOnInit(): void {
 		this._store$.dispatch(getPopularMovies({}));
 	}

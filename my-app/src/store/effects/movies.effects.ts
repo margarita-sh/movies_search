@@ -39,7 +39,7 @@ export class MoviesEffects {
 	public getTopMoviesEffect$: Observable<TypedAction<string>> = createEffect(
 		() => this.actions$.pipe(
 			ofType(getTopMovies),
-			mergeMap(() => this.movieService.getTopMovie()
+			mergeMap((action: MoviesActionProps) => this.movieService.getTopMovie(action.page)
 				.pipe(
 					map((movies: Movie[]) => {
 						return setMovies({ movies });
