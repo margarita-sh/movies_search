@@ -33,10 +33,7 @@ export class MovieListComponent implements OnInit {
 				return this._store$.dispatch(getMoviesFromSearch({ query: movieName }));
 			} else if (genreId !== undefined) {
 				return this._store$.dispatch(getMoviesByGenres({ id: genreId }));
-			} else if (movieId !== undefined) {
-				console.log('CHECK!!', movieId);
-				return this._store$.dispatch(getMoviesDetails({ idMovie: movieId }));
-			}  else {
+			} else {
 				return this._store$.dispatch(getTopMovies({}));
 			}
 		});
