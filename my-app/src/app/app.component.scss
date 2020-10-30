@@ -1,0 +1,17 @@
+.app-component {
+	width:1600px;
+	margin:auto;
+
+&--container{
+	width:100%;
+	display:flex;
+}
+&--genres {
+ 	width:30%;
+}
+
+&--outlet {
+ width:70%;
+	}
+	
+}

@@ -1,1 +1,12 @@
-<router-outlet></router-outlet> 
+<div class="app-component">
+	<app-search></app-search>
+	<app-popular></app-popular>
+	<div class="app-component--container">
+		<div class="app-component--genres">
+			<app-genres></app-genres>
+		</div>
+		<div class="app-component--outlet">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</div>

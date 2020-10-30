@@ -2,7 +2,7 @@
 	<p-carousel [value]="moviesPopular$ | async"  [numVisible]="6" [numScroll]="4"
 		[responsiveOptions]="responsiveOptions">
 		<ng-template let-movie pTemplate="item">
-			<div class="app-popular--img-container" routerLink="/movie-detail" [queryParams]="{ movieId: movie.id }">
+			<div class="app-popular--img-container"  [routerLink]="['movie-detail']"[queryParams]="{ movieId: movie.id }">
 				<img *ngIf="movie?.poster_path"
 					src="https://image.tmdb.org/t/p/w200{{movie?.poster_path}}">
 				<img *ngIf="!movie?.poster_path" src="assets/img/img-not-found.png">

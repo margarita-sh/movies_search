@@ -1,9 +1,10 @@
+<router-outlet></router-outlet>
+
 <div  *ngIf = "!movieDetails">
 	<app-card *ngFor="let movie of movies$ | async"  [movie]="movie"></app-card>
 </div> 
-
-<ng-template *ngIf = "movieDetails">
-	123456789
+<!-- <ng-template *ngIf = "movieDetails">
 	<app-details></app-details>
-</ng-template>
+</ng-template> -->
+
 

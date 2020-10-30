@@ -42,8 +42,7 @@
 			<div class="app-details--margin-string"><span><strong>Data release: </strong>{{ (movieDetails$ | async)?.release_date | fullDate}}</span></div>
 			<div class="app-details--genre app-details--margin-string">
 				<strong>Genre:</strong>
-				<a class="app-details--comma" *ngFor="let genre of (movieDetails$ | async)?.genres"
-				 routerLink="/genre/{{genre.id}}/{{genre.name}}" [queryParams]="{ genreId: genre.id }">{{ genre?.name }}</a>
+				<a class="app-details--comma" *ngFor="let genre of (movieDetails$ | async)?.genres">{{ genre?.name }}</a>
 			</div>
 			<div class="app-details--contry app-details--margin-string">
 				<strong>Country:</strong>

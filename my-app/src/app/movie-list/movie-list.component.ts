@@ -5,7 +5,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectMovies } from 'src/store/selectors/movies.selectors';
 import { MoviesState } from 'src/store/states/movies.state';
-import { getTopMovies, getMoviesFromSearch, getMoviesByGenres, getMoviesDetails } from 'src/store/actions/movies.actions';
+import { getTopMovies, getMoviesFromSearch, getMoviesByGenres, getMoviesDetails} from 'src/store/actions/movies.actions';
 
 @Component({
 	selector: 'app-movie-list',
@@ -22,7 +22,7 @@ export class MovieListComponent implements OnInit {
 
 	public ngOnInit(): void {
 		this.activateRoute.queryParams.subscribe((queryParams: ActivatedRoute) => {
-			console.log('queryParams', queryParams);
+			console.log('queryParams!!!!', queryParams);
 			const movieId: number = queryParams['movieId'];
 			if (movieId !== undefined) {
 				this.movieDetails = true;
@@ -34,11 +34,16 @@ export class MovieListComponent implements OnInit {
 			} else if (genreId !== undefined) {
 				return this._store$.dispatch(getMoviesByGenres({ id: genreId }));
 			} else if (movieId !== undefined) {
+				console.log('CHECK!!', movieId);
 				return this._store$.dispatch(getMoviesDetails({ idMovie: movieId }));
-			} else {
+			}  else {
 				return this._store$.dispatch(getTopMovies({}));
 			}
 		});
 	}
 
 }
+
+/*  else if (movieId !== undefined) {
+				return this._store$.dispatch(getMoviesDetails({ idMovie: movieId }));
+			}  */
