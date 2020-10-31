@@ -7,7 +7,7 @@ const moviesReducer: ActionReducer<MoviesState, Action> = createReducer(
 	on(MoviesAction.setMovies, (state: MoviesState, action: MoviesAction.MoviesActionProps ): MoviesState => {
 		return ({
 			...state,
-			movies: action.movies
+			result: action.result
 		});
 	}),
 	on(MoviesAction.setMoviesDetails, (state: MoviesState, action: MoviesAction.MoviesActionProps ): MoviesState => {

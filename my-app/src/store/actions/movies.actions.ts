@@ -1,7 +1,7 @@
 import { createAction, ActionCreator, props, Action } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
 import { Genres } from 'src/app/genres/model/genres.model';
-import { Movie } from 'src/app/search/model/search.model';
+import { Movie, ResultMovies } from 'src/app/search/model/search.model';
 import { DetailsModel } from 'src/app/details/model/details.model';
 
 type TypeActionCreator<S extends string, O extends object> = ActionCreator<
@@ -16,13 +16,14 @@ export interface MoviesActionProps extends Action {
 	movie: DetailsModel;
 	moviesPopular: Movie[];
 	page: number;
+	result: ResultMovies;
 }
 
 export const getMoviesByGenres: TypeActionCreator<string, { id: Genres['id'] }> = createAction(
 	'[Get movies by genres API]', props<{ id: Genres['id'] }>());
 
-export const setMovies: TypeActionCreator<string, { movies: Movie[] }> = createAction(
-	'[Set movies by genres API]', props<{ movies: Movie[] }>());
+export const setMovies: TypeActionCreator<string, { result: ResultMovies }> = createAction(
+	'[Set movies by genres API]', props<{ result: ResultMovies }>());
 
 export const getMoviesFromSearch: TypeActionCreator<string, { query: string }> = createAction(
 	'[Get movies from search]', props<{ query: string }>());

@@ -4,7 +4,7 @@ import { TypedAction } from '@ngrx/store/src/models';
 import { createEffect, ofType, Actions } from '@ngrx/effects';
 import { getMoviesByGenres, MoviesActionProps, setMovies, getMoviesFromSearch, getTopMovies, getMoviesDetails, setMoviesDetails, getPopularMovies, setPopularMovies } from '../actions/movies.actions';
 import { mergeMap, map } from 'rxjs/operators';
-import { Movie } from 'src/app/search/model/search.model';
+import { Movie, ResultMovies } from 'src/app/search/model/search.model';
 import { MovieService } from 'src/app/service/movie.service';
 import { DetailsModel } from 'src/app/details/model/details.model';
 
@@ -15,8 +15,8 @@ export class MoviesEffects {
 			ofType(getMoviesByGenres),
 			mergeMap((action: MoviesActionProps) => this.movieService.searchFilmByGenres(action.id)
 				.pipe(
-					map((movies: Movie[]) => {
-						return setMovies({ movies });
+					map((result: ResultMovies) => {
+						return setMovies({ result });
 					})
 				)
 			)
@@ -28,8 +28,8 @@ export class MoviesEffects {
 			ofType(getMoviesFromSearch),
 			mergeMap((action: MoviesActionProps) => this.movieService.searchFilm(action.query)
 				.pipe(
-					map((movies: Movie[]) => {
-						return setMovies({ movies });
+					map((result: ResultMovies) => {
+						return setMovies({ result });
 					})
 				)
 			)
@@ -41,8 +41,8 @@ export class MoviesEffects {
 			ofType(getTopMovies),
 			mergeMap((action: MoviesActionProps) => this.movieService.getTopMovie(action.page)
 				.pipe(
-					map((movies: Movie[]) => {
-						return setMovies({ movies });
+					map((result: ResultMovies) => {
+						return setMovies({ result });
 					})
 				)
 			)

@@ -3,6 +3,6 @@
 <div  *ngIf = "!movieDetails">
 	<app-card *ngFor="let movie of movies$ | async"  [movie]="movie"></app-card>
 </div> 
-<!-- <mat-paginator [length]="totalResults" [pageSize]="20" (page)="changePage($event)"></mat-paginator> -->
+ <mat-paginator [length]="totalMovies$ | async" [pageSize]="20" (page)="changePage($event)"></mat-paginator> 
 
 

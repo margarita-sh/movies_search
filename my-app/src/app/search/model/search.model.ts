@@ -15,7 +15,7 @@ export interface Movie {
 	release_date: string;
 }
 
-export interface Result {
+export interface ResultMovies {
 	page: number;
 	total_results: number;
 	total_pages: number;

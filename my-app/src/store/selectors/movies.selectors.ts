@@ -6,7 +6,9 @@ import { Result } from 'src/app/details/model/details.model';
 export const selectStateMovies: MemoizedSelector<IAppState, MoviesState> =
 	createFeatureSelector<MoviesState>(featureKeyMovies);
 
-export const selectMovies: any = createSelector(selectStateMovies, (state: MoviesState) => state.movies);
+export const selectMovies: any = createSelector(selectStateMovies, (state: MoviesState) => state.result?.results);
+
+export const selectTotalMovies: any = createSelector(selectStateMovies, (state: MoviesState) => state.result?.total_pages);
 
 export const selectMovie: any = createSelector(selectStateMovies, (state: MoviesState) => state.movie);
 
@@ -14,7 +16,6 @@ export const selectMoviesPopular: any = createSelector(selectStateMovies, (state
 
 export const selectMoviesVideoKey: any = createSelector(selectStateMovies, (state: MoviesState) => {
 	if (state.movie && state.movie.videos) {
-		console.log(state);
 		return state.movie.videos.results.find((data: Result) => {
 			return data.key;
 		});
