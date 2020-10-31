@@ -1,4 +1,4 @@
-	<div *ngFor="let genre of genres$ | async"  [routerLink]="['genre']" [queryParams]="{ genreId: genre.id }" class="app-genres--item">
+	<div *ngFor="let genre of genres$ | async"  [routerLink]="['/genre', genre.id]" class="app-genres--item">
 		<span>{{genre.name}}</span>
 	</div>
 	

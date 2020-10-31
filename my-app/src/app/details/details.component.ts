@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DetailsModel, Result } from './model/details.model';
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Store, select } from '@ngrx/store';
 import { MoviesState } from 'src/store/states/movies.state';
@@ -22,19 +22,18 @@ export class DetailsComponent implements OnInit {
 	public selectMoviesVideoKey$: Observable<DetailsModel> = this._store$.pipe(select(selectMoviesVideoKey));
 
 	constructor(private activateRoute: ActivatedRoute,
-		 private sanitizer: DomSanitizer, public _store$: Store<MoviesState>) { }
+		private sanitizer: DomSanitizer, public _store$: Store<MoviesState>) { }
 	public ngOnInit(): void {
-
-	 	this.activateRoute.queryParams.subscribe((queryParams: ActivatedRoute) => {
-			const movieId: number = queryParams['movieId'];
+		this.activateRoute.params.subscribe((params: ActivatedRoute) => {
+			const movieId: number = params['movieId'];
 			this._store$.dispatch(getMoviesDetails({ idMovie: movieId }));
-			this.selectMoviesVideoKey$.subscribe((item: any)  => {
+			this.selectMoviesVideoKey$.subscribe((item: any) => {
 				if (item) {
 					this.srcVideo = this.srcVideoFromYoutube + item.key;
 					this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.srcVideo);
 				}
 
 			});
-	 });
-}
+		});
+	}
 }

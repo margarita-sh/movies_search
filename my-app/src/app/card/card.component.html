@@ -1,6 +1,6 @@
 <div class="app-card">
 	<div class="app-card--container">
-		<div class="app-card--wrapper-img" routerLink="/movie-detail" [queryParams]="{ movieId: movie.id }">
+		<div class="app-card--wrapper-img" [routerLink]="['/movie-detail', movie.id]">
 			<img src="{{ posterUrl }}" alt="poster" class="app-card--img">
 		</div>
 		<div class="app-card--information">

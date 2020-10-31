@@ -19,17 +19,17 @@ export class MovieListComponent implements OnInit {
 	constructor(
 		public _store$: Store<MoviesState>,
 		private activateRoute: ActivatedRoute,
-		private router: Router
 	) { }
 
 	public ngOnInit(): void {
-		this.activateRoute.queryParams.subscribe((queryParams: ActivatedRoute) => {
-			const movieId: number = queryParams['movieId'];
+		this.activateRoute.params.subscribe( (params: ActivatedRoute)  => {
+			console.log(params);
+			const movieId: number = params['movieId'];
 			if (movieId !== undefined) {
 				this.movieDetails = true;
 			}
-			const movieName: string = queryParams['nameMovie'];
-			const genreId: number = queryParams['genreId'];
+			const movieName: string = params['nameMovie'];
+			const genreId: number = params['id'];
 			if (movieName !== undefined) {
 				return this._store$.dispatch(getMoviesFromSearch({ query: movieName }));
 			} else if (genreId !== undefined) {
@@ -40,9 +40,9 @@ export class MovieListComponent implements OnInit {
 			}
 		});
 	}
-
-	/* public changePage(event): void {
-		this.router.navigate([''], { page: event.pageIndex + 1});
-	} */
+	public changePage(event: any): void {
+		console.log(event);
+		/* this.router.navigate([''], { page: event.pageIndex + 1}) */
+	}
 
 }
