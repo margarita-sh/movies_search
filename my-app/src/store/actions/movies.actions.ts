@@ -19,14 +19,14 @@ export interface MoviesActionProps extends Action {
 	result: ResultMovies;
 }
 
-export const getMoviesByGenres: TypeActionCreator<string, { id: Genres['id'] }> = createAction(
-	'[Get movies by genres API]', props<{ id: Genres['id'] }>());
+export const getMoviesByGenres: TypeActionCreator<string, { id: Genres['id'], page: number }> = createAction(
+	'[Get movies by genres API]', props<{ id: Genres['id'], page: number }>());
 
 export const setMovies: TypeActionCreator<string, { result: ResultMovies }> = createAction(
 	'[Set movies by genres API]', props<{ result: ResultMovies }>());
 
-export const getMoviesFromSearch: TypeActionCreator<string, { query: string }> = createAction(
-	'[Get movies from search]', props<{ query: string }>());
+export const getMoviesFromSearch: TypeActionCreator<string, { query: string, page: number; }> = createAction(
+	'[Get movies from search]', props<{ query: string, page: number }>());
 
 export const getTopMovies: TypeActionCreator<string, { page: number }> = createAction(
 	'[Get TOP movies from API]', props<{ page: number }>());

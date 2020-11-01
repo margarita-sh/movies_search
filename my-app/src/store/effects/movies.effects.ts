@@ -13,7 +13,7 @@ export class MoviesEffects {
 	public getMoviesByGenresEffect$: Observable<TypedAction<string>> = createEffect(
 		() => this.actions$.pipe(
 			ofType(getMoviesByGenres),
-			mergeMap((action: MoviesActionProps) => this.movieService.searchFilmByGenres(action.id)
+			mergeMap((action: MoviesActionProps) => this.movieService.searchFilmByGenres(action.id, action.page)
 				.pipe(
 					map((result: ResultMovies) => {
 						return setMovies({ result });
@@ -26,7 +26,7 @@ export class MoviesEffects {
 	public getMoviesFromSearchEffect$: Observable<TypedAction<string>> = createEffect(
 		() => this.actions$.pipe(
 			ofType(getMoviesFromSearch),
-			mergeMap((action: MoviesActionProps) => this.movieService.searchFilm(action.query)
+			mergeMap((action: MoviesActionProps) => this.movieService.searchFilm(action.query, action.page)
 				.pipe(
 					map((result: ResultMovies) => {
 						return setMovies({ result });

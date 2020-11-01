@@ -30,6 +30,9 @@ import { SliceStringPipe } from './pipe/sliceString.pipe';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { MovieListGenreComponent } from './movie-list-genre/movie-list-genre.component';
+import { MovieListTopComponent } from './movie-list-top/movie-list-top.component';
+import { MovieListSearchComponent } from './movie-list-search/movie-list-search.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 	MovieListComponent,
 	DatePipe,
 	SliceStringPipe,
+	MovieListGenreComponent,
+	MovieListTopComponent,
+	MovieListSearchComponent,
   ],
   imports: [
 	BrowserModule,
