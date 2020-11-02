@@ -1,8 +1,8 @@
 import { createAction, ActionCreator, props, Action } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
-import { Genres } from 'src/app/genres/model/genres.model';
-import { Movie, ResultMovies } from 'src/app/search/model/search.model';
-import { DetailsModel } from 'src/app/details/model/details.model';
+import { Genres } from 'src/app/components/genres/model/genres.model';
+import { Movie, ResultMovies } from 'src/app/components/search/model/search.model';
+import { DetailsModel } from 'src/app/components/details/model/details.model';
 
 type TypeActionCreator<S extends string, O extends object> = ActionCreator<
 	S, (props: O) => & TypedAction<S>

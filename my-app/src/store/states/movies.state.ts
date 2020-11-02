@@ -1,5 +1,5 @@
-import { Movie, ResultMovies } from 'src/app/search/model/search.model';
-import { DetailsModel} from 'src/app/details/model/details.model';
+import { Movie, ResultMovies } from 'src/app/components/search/model/search.model';
+import { DetailsModel} from 'src/app/components/details/model/details.model';
 
 export interface MoviesState {
  	movies: Movie[];

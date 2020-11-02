@@ -1,4 +1,4 @@
-import { Genres } from 'src/app/genres/model/genres.model';
+import { Genres } from 'src/app/components/genres/model/genres.model';
 
 export interface GenresState {
 	genres: Genres[];

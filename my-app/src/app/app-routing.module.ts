@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DetailsComponent } from './details/details.component';
-import { MovieListComponent } from './movie-list/movie-list.component';
-import { MovieListTopComponent } from './movie-list-top/movie-list-top.component';
-import { MovieListGenreComponent } from './movie-list-genre/movie-list-genre.component';
-import { MovieListSearchComponent } from './movie-list-search/movie-list-search.component';
+import { DetailsComponent } from './components/details/details.component';
+import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { MovieListTopComponent } from './components/movie-list-top/movie-list-top.component';
+import { MovieListGenreComponent } from './components/movie-list-genre/movie-list-genre.component';
+import { MovieListSearchComponent } from './components/movie-list-search/movie-list-search.component';
 
 const routes: Routes = [
   	{ path: '', component: MovieListTopComponent }, // here add path

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { Store} from '@ngrx/store';
+import { MoviesEffects } from 'src/store/effects/movies.effects';
+import { Store } from '@ngrx/store';
 import { getTopMovies } from 'src/store/actions/movies.actions';
-import { MoviesState } from 'src/store/states/movies.state';
 
 @Component({
 	selector: 'app-movie-list-top',
@@ -11,7 +11,7 @@ import { MoviesState } from 'src/store/states/movies.state';
 })
 export class MovieListTopComponent implements OnInit {
 
-	constructor(private activateRoute: ActivatedRoute, private _store$: Store<MoviesState>, private router: Router) { }
+	constructor(private activateRoute: ActivatedRoute, private _store$: Store<MoviesEffects>, private router: Router) { }
 
 	public ngOnInit(): void {
 		this.activateRoute.queryParams.subscribe((params: any) => {

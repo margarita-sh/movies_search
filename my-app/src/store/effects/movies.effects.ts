@@ -4,9 +4,9 @@ import { TypedAction } from '@ngrx/store/src/models';
 import { createEffect, ofType, Actions } from '@ngrx/effects';
 import { getMoviesByGenres, MoviesActionProps, setMovies, getMoviesFromSearch, getTopMovies, getMoviesDetails, setMoviesDetails, getPopularMovies, setPopularMovies } from '../actions/movies.actions';
 import { mergeMap, map } from 'rxjs/operators';
-import { Movie, ResultMovies } from 'src/app/search/model/search.model';
+import { Movie, ResultMovies } from 'src/app/components/search/model/search.model';
 import { MovieService } from 'src/app/service/movie.service';
-import { DetailsModel } from 'src/app/details/model/details.model';
+import { DetailsModel } from 'src/app/components/details/model/details.model';
 
 @Injectable()
 export class MoviesEffects {

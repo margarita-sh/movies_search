@@ -1,7 +1,7 @@
 import { MemoizedSelector, createFeatureSelector, createSelector } from '@ngrx/store';
 import { IAppState } from '..';
 import { MoviesState, featureKeyMovies } from '../states/movies.state';
-import { Result } from 'src/app/details/model/details.model';
+import { Result } from 'src/app/components/details/model/details.model';
 
 export const selectStateMovies: MemoizedSelector<IAppState, MoviesState> =
 	createFeatureSelector<MoviesState>(featureKeyMovies);
