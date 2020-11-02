@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable} from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { TypedAction } from '@ngrx/store/src/models';
 import { createEffect, ofType, Actions } from '@ngrx/effects';
-import { getMoviesByGenres, MoviesActionProps, setMovies, getMoviesFromSearch, getTopMovies, getMoviesDetails, setMoviesDetails, getPopularMovies, setPopularMovies } from '../actions/movies.actions';
+import { getMoviesByGenres, MoviesActionProps, setMovies, getMoviesFromSearch, getTopMovies, getMoviesDetails, setMoviesDetails, getPopularMovies, setPopularMovies, statusMoviesList, addMoviesToLocalStorage } from '../actions/movies.actions';
 import { mergeMap, map } from 'rxjs/operators';
 import { Movie, ResultMovies } from 'src/app/components/search/model/search.model';
 import { MovieService } from 'src/app/service/movie.service';
@@ -74,6 +74,20 @@ export class MoviesEffects {
 			)
 		)
 	);
+
+	public addMoviesListToLSEffect$: Observable<TypedAction<string>> = createEffect(
+		() => this.actions$.pipe(
+			ofType(addMoviesToLocalStorage),
+			mergeMap((action: MoviesActionProps) => of(this.movieService.addNewMoviesToBookmarks(action.movies))
+				.pipe(
+					map(() => {
+						return statusMoviesList({});
+					})
+				)
+			)
+		)
+	);
+
 
 	constructor(
 		private actions$: Actions,

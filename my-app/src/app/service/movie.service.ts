@@ -30,9 +30,12 @@ export class MovieService {
 	}
 
 	public addNewMoviesToBookmarks(movies: Movie[]): void {
+		console.log('movies', movies);
 		const dataFromLocalSrorageString: string = localStorage.getItem(this.keyForLocalStorage);
+
+		console.log(dataFromLocalSrorageString);
 		// tslint:disable-next-line: strict-boolean-expressions
-		if ( !dataFromLocalSrorageString || dataFromLocalSrorageString.length === 0 ) {
+		if (dataFromLocalSrorageString !== null) {
 			const moviesFromLocalStorage: Movie[] = JSON.parse(dataFromLocalSrorageString);
 			movies = movies.filter((item: Movie) => {
 				const result: Movie = moviesFromLocalStorage.find((data: Movie) => {

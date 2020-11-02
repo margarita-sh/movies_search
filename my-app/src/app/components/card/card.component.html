@@ -1,16 +1,20 @@
 <div class="app-card">
 	<div class="app-card--container">
 		<div class="app-card--wrapper-img" [routerLink]="['/movie-detail', movie.id]">
-		<img *ngIf="movie?.poster_path"
-					src="https://image.tmdb.org/t/p/w300{{movie?.poster_path}}" class="app-card--img">
-		<img *ngIf="!movie?.poster_path" src="assets/img/img-not-found.png" class="app-card--img">
+			<img *ngIf="movie?.poster_path" src="https://image.tmdb.org/t/p/w300{{movie?.poster_path}}"
+				class="app-card--img">
+			<img *ngIf="!movie?.poster_path" src="assets/img/img-not-found.png" class="app-card--img">
 		</div>
 		<div class="app-card--information">
-			<h3 class="app-card--title">{{ movie.title }}</h3>
+			<div class="app-card--container-title">
+				<h3 class="app-card--title">{{ movie.title }}</h3>
+				<mat-icon class="app-card--bookmarks" (click)="addToWatchList(movie)">bookmark_border</mat-icon>
+			</div>
 			<p-rating [ngModel]="movie.vote_average" readonly="true" stars="10" [cancel]="false"></p-rating>
 			<p>{{ movie.overview }}</p>
-			<p><strong>Average vote: </strong><i class="material-icons app-card--star">star</i>{{ movie.vote_average }}/10</p>
-<!-- 			<p class="app-card--rate"><i class="material-icons app-card--star">star</i>{{movie?.vote_average}}</span>/10</p> -->
+			<p><strong>Average vote: </strong><i
+					class="material-icons app-card--star">star</i>{{ movie.vote_average }}/10</p>
+			<!-- 			<p class="app-card--rate"><i class="material-icons app-card--star">star</i>{{movie?.vote_average}}</span>/10</p> -->
 			<p><strong>Date of release: </strong>{{ movie.release_date | fullDate}}</p>
 			<p><strong>Popularity: </strong>{{ movie.popularity }}</p>
 			<p><strong>Votes: </strong>{{ movie.vote_count }}</p>

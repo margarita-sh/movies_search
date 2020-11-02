@@ -33,9 +33,19 @@
 		 opacity: 1; 
 		} 
 	&--title {
-		margin: 1rem 0.5rem;
-		font-size: $title-font-size;
+		 font-size: $title-font-size; 
 	}
+	&--container-title {
+		display: flex;
+		justify-content: space-between; 
+		margin:1rem 0;
+	}
+	&--bookmarks.mat-icon{
+		font-size: $big-font-size;
+        height: auto !important; 
+        width: auto !important;
+	}
+
 	&--star {
 		color: $third-color;
 	}

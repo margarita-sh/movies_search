@@ -29,11 +29,11 @@ import { DatePipe } from './pipe/data.pipe';
 import { SliceStringPipe } from './pipe/sliceString.pipe';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MovieListGenreComponent } from './components/movie-list-genre/movie-list-genre.component';
 import { MovieListTopComponent } from './components/movie-list-top/movie-list-top.component';
 import { MovieListSearchComponent } from './components/movie-list-search/movie-list-search.component';
-import { BookmarksComponent } from './components/bookmarks/bookmarks.component';
+import { WatchListComponent } from './components/bookmarks/watchList.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,7 @@ import { BookmarksComponent } from './components/bookmarks/bookmarks.component';
 	MovieListGenreComponent,
 	MovieListTopComponent,
 	MovieListSearchComponent,
-	BookmarksComponent,
+	WatchListComponent
   ],
   imports: [
 	BrowserModule,
