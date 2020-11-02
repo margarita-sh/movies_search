@@ -20,9 +20,9 @@ export class MovieListTopComponent implements OnInit {
 		this.activateRoute.queryParams.subscribe((params: any) => {
 			return this._store$.dispatch(getTopMovies({ page: params.page ? params.page : 1 }));
 		});
+
 	}
 	public changePage(event: any): void {
-/* 		this._store$.dispatch(getTopMovies({ page: event.pageIndex + 1 })); */
 		const navigationExtras: NavigationExtras = {
 			queryParams: { page: event.pageIndex + 1 }
 		};

@@ -18,26 +18,21 @@ export class MovieListSearchComponent implements OnInit {
 
 	public ngOnInit(): void {
 		this.activateRoute.params.subscribe((params: any) => {
-			console.log(params);
-
 			const movieName: string = params['nameMovie'];
-			return this._store$.dispatch(getMoviesFromSearch({ query: movieName, page: params.page ? params.page : 1 }));
+			this.activateRoute.queryParams.subscribe((item: any) => {
+				return this._store$.dispatch(getMoviesFromSearch({ query: movieName, page: item.page ? item.page : 1 }));
+			});
+
 		});
 	}
 
 	public changePage(event: any): void {
-		/* console.log(this.activateRoute.snapshot);
-		const nameMovie: string = this.activateRoute.snapshot.params.nameMovie;
-		let page: number = Number(this.activateRoute.snapshot.params.page);
-		page = page ? page : 1
-		this.router.navigate(['search/' + nameMovie + "/" + (page + 1)]); */
-		const nameMovie: string = this.activateRoute.snapshot.params.nameMovie;
-		this._store$.dispatch(getMoviesFromSearch({ query: nameMovie, page: event.pageIndex + 1 }));
-		const navigationExtras: NavigationExtras = {
-		queryParams: { page: event.pageIndex + 1 }
-		};
-		 this.router.navigate(['search/' + nameMovie + "/"], navigationExtras);
+		this.activateRoute.params.subscribe((item: any) => {
+			const navigationExtras: NavigationExtras = {
+				queryParams: { page: event.pageIndex + 1 }
+			};
+			this.router.navigate(['/search', item.nameMovie], navigationExtras);
+		});
 
 	}
-
 }
