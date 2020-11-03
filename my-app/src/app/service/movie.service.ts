@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Movie, ResultMovies} from '../components/search/model/search.model';
 import { Genres } from 'src/app/components/genres/model/genres.model';
+import { Result } from '../components/details/model/details.model';
 
 @Injectable({
 	providedIn: 'root'
@@ -21,8 +22,8 @@ export class MovieService {
 	}
 
 	public loadMovieListFromLocalStorage(): Observable<Movie[]> {
-		const gettingDataFromLocalStorage: any = localStorage.getItem(this.keyForLocalStorage);
-		if (gettingDataFromLocalStorage) {
+		const gettingDataFromLocalStorage: string = localStorage.getItem(this.keyForLocalStorage);
+		if (gettingDataFromLocalStorage !== null) {
 			const MoviesFromStorage: Movie[] = JSON.parse(gettingDataFromLocalStorage);
 			return of(MoviesFromStorage);
 		}
@@ -35,7 +36,7 @@ export class MovieService {
 		if (dataFromLocalSrorageString !== null) {
 			const moviesFromLocalStorage: Movie[] = JSON.parse(dataFromLocalSrorageString);
 			movies = movies.filter((item: Movie) => {
-				const result: Movie = moviesFromLocalStorage.find((data: Movie) => {
+				const result: Movie = moviesFromLocalStorage['results'].find((data: Movie) => {
 					return data.id === item.id;
 				});
 				if (result) {
@@ -44,10 +45,14 @@ export class MovieService {
 					return true;
 				}
 			});
-			const moviesForLocalStorage: Movie[] = moviesFromLocalStorage.concat(movies);
-			localStorage.setItem(this.keyForLocalStorage,  JSON.stringify(moviesForLocalStorage));
+
+			const moviesForLocalStorage: any = moviesFromLocalStorage['results'].concat(movies);
+			const dataForLS: any  = {results: moviesForLocalStorage};
+			localStorage.clear();
+			localStorage.setItem(this.keyForLocalStorage,  JSON.stringify(dataForLS));
 			} else {
-				localStorage.setItem(this.keyForLocalStorage, JSON.stringify(movies));
+				const dataForLS: any  = {results: movies};
+				localStorage.setItem(this.keyForLocalStorage, JSON.stringify(dataForLS));
 			}
 		}
 

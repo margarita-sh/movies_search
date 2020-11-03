@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { TypedAction } from '@ngrx/store/src/models';
 import { createEffect, ofType, Actions } from '@ngrx/effects';
-import { getMoviesByGenres, MoviesActionProps, setMovies, getMoviesFromSearch, getTopMovies, getMoviesDetails, setMoviesDetails, getPopularMovies, setPopularMovies, statusMoviesList, addMoviesToLocalStorage, getMovieListFromLocalStorage, setMoviesFromLocalStorage } from '../actions/movies.actions';
+import { getMoviesByGenres, MoviesActionProps, setMovies, getMoviesFromSearch, getTopMovies, getMoviesDetails, setMoviesDetails, getPopularMovies, setPopularMovies, statusMoviesList, addMoviesToLocalStorage, getMovieListFromLocalStorage} from '../actions/movies.actions';
 import { mergeMap, map } from 'rxjs/operators';
 import { Movie, ResultMovies } from 'src/app/components/search/model/search.model';
 import { MovieService } from 'src/app/service/movie.service';
@@ -93,10 +93,14 @@ export class MoviesEffects {
 			ofType(getMovieListFromLocalStorage),
 			mergeMap(() => this.movieService.loadMovieListFromLocalStorage()
 			.pipe(
-				map((movies: Movie[]) => {
+				map((result: any) => {
+					console.log('ggggg', result);
+					return setMovies({ result });
+				})
+				/* map((movies: Movie[]) => {
 					console.log('effect', movies);
 					return setMoviesFromLocalStorage({ movies });
-				})
+				}) */
 				)
 			)
 		)

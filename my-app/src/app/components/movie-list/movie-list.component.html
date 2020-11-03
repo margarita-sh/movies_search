@@ -1,4 +1,3 @@
-
 <app-card *ngFor="let movie of movies$ | async"  [movie]="movie"></app-card>
 <mat-paginator [length]="totalMovies$ | async" [pageSize]="20" (page)="changePage($event)"></mat-paginator>  
 

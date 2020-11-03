@@ -22,12 +22,12 @@ const moviesReducer: ActionReducer<MoviesState, Action> = createReducer(
 			moviesPopular: action.moviesPopular
 		});
 	}),
-	on(MoviesAction.setMoviesFromLocalStorage, (state: MoviesState, action: MoviesAction.MoviesActionProps ): MoviesState => {
+/* 	on(MoviesAction.setMoviesFromLocalStorage, (state: MoviesState, action: MoviesAction.MoviesActionProps ): MoviesState => {
 		return ({
 			...state,
 			movies: action.movies
 		});
-	})
+	}) */
 );
 
 export function StateReducerMovies(state: MoviesState | undefined, action: Action): MoviesState {

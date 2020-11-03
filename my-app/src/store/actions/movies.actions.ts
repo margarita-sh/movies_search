@@ -55,5 +55,5 @@ export const statusMoviesList: TypeActionCreator<string, {}> = createAction(
 export const getMovieListFromLocalStorage: TypeActionCreator<string, {}> = createAction(
 		'[Get movies from LS]');
 
-export const setMoviesFromLocalStorage: TypeActionCreator<string, { movies: Movie[] }> = createAction(
-			'[Set movies From Local Storage]', props<{ movies: Movie[] }>());
+/* export const setMoviesFromLocalStorage: TypeActionCreator<string, { movies: Movie[] }> = createAction(
+			'[Set movies From Local Storage]', props<{ movies: Movie[] }>()); */
