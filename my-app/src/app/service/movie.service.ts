@@ -30,10 +30,7 @@ export class MovieService {
 	}
 
 	public addNewMoviesToBookmarks(movies: Movie[]): void {
-		console.log('movies', movies);
 		const dataFromLocalSrorageString: string = localStorage.getItem(this.keyForLocalStorage);
-
-		console.log(dataFromLocalSrorageString);
 		// tslint:disable-next-line: strict-boolean-expressions
 		if (dataFromLocalSrorageString !== null) {
 			const moviesFromLocalStorage: Movie[] = JSON.parse(dataFromLocalSrorageString);
@@ -52,7 +49,6 @@ export class MovieService {
 			} else {
 				localStorage.setItem(this.keyForLocalStorage, JSON.stringify(movies));
 			}
-
 		}
 
 	 public searchFilm(query: string, page: number): Observable<ResultMovies> {

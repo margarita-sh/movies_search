@@ -8,7 +8,7 @@
 			<div class="app-details--margin-string"><p>{{ (movieDetails$ | async)?.overview }}</p></div>
 <!-- 			<p class="app-popular--rate"><i class="material-icons app-popular--star">star</i><span>{{movie?.vote_average}}</span>/10</p> -->
 			<div class="app-details--margin-string"><span><strong>Average vote: </strong> <i class="material-icons app-details--star">star</i> {{ (movieDetails$ | async)?.vote_average }}/10</span></div>
-			<div class="app-details--margin-string"><span><strong>Data release: </strong>{{ (movieDetails$ | async)?.release_date | fullDate}}</span></div>
+			<div class="app-details--margin-string"><span><strong>Data release: </strong>{{ (movieDetails$ | async)?.release_date | fullDatePipe}}</span></div>
 			<div class="app-details--genre app-details--margin-string">
 				<strong>Genre:</strong>
 				<a class="app-details--comma" *ngFor="let genre of (movieDetails$ | async)?.genres" [routerLink]="['/genre', genre.id]">{{ genre?.name }}</a>

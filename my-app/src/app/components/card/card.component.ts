@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ComponentFactoryResolver } from '@angular/core';
 import { Movie } from '../search/model/search.model';
 import { MoviesState } from 'src/store/states/movies.state';
 import { Store } from '@ngrx/store';
@@ -11,17 +11,17 @@ import { addMoviesToLocalStorage } from 'src/store/actions/movies.actions';
 })
 export class CardComponent implements OnInit {
 	@Input() public movie: Movie;
-/* 	public movieList: Movie[] = []; */
+	public noChecked: boolean = true;
 
 	constructor(private _store$: Store<MoviesState>) { }
 
+	// tslint:disable-next-line: no-empty
 	public ngOnInit(): void {
 	}
 
 	public addToWatchList(movie: Movie): void {
-		const movieList: Movie[] = [movie];
-		this._store$.dispatch(addMoviesToLocalStorage({movies: movieList }));
+		this.noChecked = !this.noChecked;
+		this._store$.dispatch(addMoviesToLocalStorage({movies: [movie] }));
 	}
-
 
 }

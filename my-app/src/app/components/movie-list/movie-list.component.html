@@ -1,8 +1,5 @@
-<!-- <router-outlet></router-outlet> -->
 
-<!-- <div  *ngIf = "!movieDetails"> -->
-	<app-card *ngFor="let movie of movies$ | async"  [movie]="movie"></app-card>
-<!-- </div>  -->
-  <mat-paginator [length]="totalMovies$ | async" [pageSize]="20" (page)="changePage($event)"></mat-paginator>  
+<app-card *ngFor="let movie of movies$ | async"  [movie]="movie"></app-card>
+<mat-paginator [length]="totalMovies$ | async" [pageSize]="20" (page)="changePage($event)"></mat-paginator>  
 
 

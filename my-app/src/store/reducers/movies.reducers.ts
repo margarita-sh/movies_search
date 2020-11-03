@@ -21,6 +21,12 @@ const moviesReducer: ActionReducer<MoviesState, Action> = createReducer(
 			...state,
 			moviesPopular: action.moviesPopular
 		});
+	}),
+	on(MoviesAction.setMoviesFromLocalStorage, (state: MoviesState, action: MoviesAction.MoviesActionProps ): MoviesState => {
+		return ({
+			...state,
+			movies: action.movies
+		});
 	})
 );
 

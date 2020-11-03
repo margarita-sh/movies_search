@@ -33,7 +33,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MovieListGenreComponent } from './components/movie-list-genre/movie-list-genre.component';
 import { MovieListTopComponent } from './components/movie-list-top/movie-list-top.component';
 import { MovieListSearchComponent } from './components/movie-list-search/movie-list-search.component';
-import { WatchListComponent } from './components/bookmarks/watchList.component';
+import { WatchListComponent } from './components/watchList/watchList.component';
+import { MovieListBookmarksComponent } from './components/movie-list-bookmarks/movie-list-bookmarks.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { WatchListComponent } from './components/bookmarks/watchList.component';
 	MovieListGenreComponent,
 	MovieListTopComponent,
 	MovieListSearchComponent,
-	WatchListComponent
+	WatchListComponent,
+	MovieListBookmarksComponent
   ],
   imports: [
 	BrowserModule,

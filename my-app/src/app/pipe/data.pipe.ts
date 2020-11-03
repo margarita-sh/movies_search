@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-	name: 'fullDate'
+	name: 'fullDatePipe'
 })
 export class DatePipe implements PipeTransform {
 

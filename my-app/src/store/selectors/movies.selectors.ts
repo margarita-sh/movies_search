@@ -24,3 +24,5 @@ export const selectMoviesVideoKey: any = createSelector(selectStateMovies, (stat
 	}
 }
 );
+
+export const selectMoviesFromLocalStorage: any = createSelector(selectStateMovies, (state: MoviesState) => state.movies);
