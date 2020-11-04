@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesEffects } from 'src/store/effects/movies.effects';
-import { Store} from '@ngrx/store';
+import { Store, select} from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { quantityMovies } from 'src/store/selectors/movies.selectors';
+import { MoviesState } from 'src/store/states/movies.state';
+import { getQuantityMovies } from 'src/store/actions/movies.actions';
 
 @Component({
   selector: 'app-watch-list',
@@ -9,8 +12,11 @@ import { Store} from '@ngrx/store';
 })
 export class WatchListComponent implements OnInit {
 
-  constructor(private _store$: Store<MoviesEffects>) { }
+  public quantityMovies$: Observable<number> = this._store$.pipe(select(quantityMovies));
+  constructor(private _store$: Store<MoviesState>) { }
 
   // tslint:disable-next-line: no-empty
-  public  ngOnInit(): void {}
+  public  ngOnInit(): void {
+ 	  this._store$.dispatch(getQuantityMovies({})); 
+  }
 }

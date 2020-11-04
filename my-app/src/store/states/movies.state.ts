@@ -6,6 +6,7 @@ export interface MoviesState {
 	result: ResultMovies;
 	movie: DetailsModel;
 	moviesPopular: Movie[];
+	quantityMovies: number;
 }
 
 export const featureKeyMovies: 'MOVIES' = 'MOVIES';
@@ -15,4 +16,5 @@ export const initialState: MoviesState = {
 	movie: null,
 	moviesPopular: [],
 	result: null,
+	quantityMovies: 0
 };

@@ -30,6 +30,9 @@ import { SliceStringPipe } from './pipe/sliceString.pipe';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
+// import { MatBadgeModule } from '@angular/material/badge';
+import {PanelModule} from 'primeng/panel';
+import {TabViewModule} from 'primeng/tabview';
 import { MovieListGenreComponent } from './components/movie-list-genre/movie-list-genre.component';
 import { MovieListTopComponent } from './components/movie-list-top/movie-list-top.component';
 import { MovieListSearchComponent } from './components/movie-list-search/movie-list-search.component';
@@ -51,7 +54,7 @@ import { MovieListBookmarksComponent } from './components/movie-list-bookmarks/m
 	MovieListTopComponent,
 	MovieListSearchComponent,
 	WatchListComponent,
-	MovieListBookmarksComponent
+	MovieListBookmarksComponent,
   ],
   imports: [
 	BrowserModule,
@@ -67,6 +70,8 @@ import { MovieListBookmarksComponent } from './components/movie-list-bookmarks/m
 	ButtonModule,
 	InputTextModule,
 	MatPaginatorModule,
+	TabViewModule,
+	PanelModule,
 	StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
 	StoreModule.forRoot(reducer),
 	EffectsModule.forRoot([GenresEffects, MoviesEffects]),

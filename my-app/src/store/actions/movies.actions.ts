@@ -17,6 +17,8 @@ export interface MoviesActionProps extends Action {
 	moviesPopular: Movie[];
 	page: number;
 	result: ResultMovies;
+	quantityMovies: number;
+
 }
 
 export const getMoviesByGenres: TypeActionCreator<string, { id: Genres['id'], page: number }> = createAction(
@@ -44,10 +46,16 @@ export const setPopularMovies: TypeActionCreator<string, {moviesPopular: Movie[]
 	'[Set Popular Movie from API]', props<{ moviesPopular: Movie[]}>());
 
 export const addMoviesToLocalStorage: TypeActionCreator<string, {movies: Movie[]}> = createAction(
-		'[Add MoviesList to LocalStorage]', props<{ movies: Movie[] }>());
+	'[Add MoviesList to LocalStorage]', props<{ movies: Movie[] }>());
 
 export const statusMoviesList: TypeActionCreator<string, {}> = createAction(
-		'[Status MoviesList]');
+	'[Status MoviesList]');
 
 export const getMovieListFromLocalStorage: TypeActionCreator<string, {page: number}> = createAction(
-		'[Get movies from LS]', props<{ page: number }>());
+	'[Get movies from LS]', props<{ page: number }>());
+
+export const getQuantityMovies: TypeActionCreator<string, {}> = createAction(
+	'[Get quantity Movies]');
+
+export const quantityMoviesForBadge: TypeActionCreator<string, {quantityMovies: number}> = createAction(
+	'[Set quantity Movies]', props<{quantityMovies: number}>());

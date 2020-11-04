@@ -16,21 +16,30 @@ export class MovieService {
 	constructor(private _http: HttpClient) {
 	}
 
-	public save(movies: Movie[]): void {
+	/* public save(movies: Movie[]): void {
 		const dataForLocalSrorageString: string = JSON.stringify(movies);
 		localStorage.setItem(this.keyForLocalStorage, dataForLocalSrorageString);
-	}
+	} */
 
 	public loadMovieListFromLocalStorage(page: number): Observable<any> {
 		const gettingDataFromLocalStorage: string = localStorage.getItem(this.keyForLocalStorage);
 		if (gettingDataFromLocalStorage !== null) {
 			const moviesFromStorage: any = JSON.parse(gettingDataFromLocalStorage);
-			const offset: number = (page - 1 ) * 20;
+			// tslint:disable-next-line: no-magic-numbers
+			const offset: number = (page - 1) * 20;
+			// tslint:disable-next-line: no-magic-numbers
 			moviesFromStorage.results = moviesFromStorage.results.slice(offset, offset + 20);
 			moviesFromStorage.page = page;
 			return of(moviesFromStorage);
 		}
 		return of([]);
+	}
+
+	public getQuantityMovies(): Observable<any> {
+	const dataFromLS: any = JSON.parse(localStorage.getItem(this.keyForLocalStorage));
+		if( dataFromLS !== null) {
+			return of(dataFromLS);
+		}
 	}
 
 	public addNewMoviesToBookmarks(movies: Movie[]): void {
@@ -52,14 +61,16 @@ export class MovieService {
 
 			const moviesForLocalStorage: any = moviesFromLocalStorage['results'].concat(movies);
 			const totalResults: number = moviesForLocalStorage.length;
-			const totalPages: number  = totalResults < totalMovieOnPage ? 1 : Math.ceil(totalResults / totalMovieOnPage);
-			const dataForLS: any = { results: moviesForLocalStorage, total_results: totalResults, total_pages: totalPages};
+			const totalPages: number = totalResults < totalMovieOnPage ? 1 : Math.ceil(totalResults / totalMovieOnPage);
+			const dataForLS: any = { results: moviesForLocalStorage, total_results: totalResults, total_pages: totalPages };
 			// tslint:disable-next-line: no-magic-numbers
 			localStorage.clear();
 			localStorage.setItem(this.keyForLocalStorage, JSON.stringify(dataForLS));
 		} else {
-			const dataForLS: any = { results: movies, total_results: movies.length,
-				 total_pages: movies.length < totalMovieOnPage ? 1 : Math.ceil(movies.length / totalMovieOnPage)};
+			const dataForLS: any = {
+				results: movies, total_results: movies.length,
+				total_pages: movies.length < totalMovieOnPage ? 1 : Math.ceil(movies.length / totalMovieOnPage)
+			};
 			localStorage.setItem(this.keyForLocalStorage, JSON.stringify(dataForLS));
 		}
 	}

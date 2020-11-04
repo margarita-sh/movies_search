@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnDestroy, ComponentFactoryResolver } from '@
 import { Movie } from '../search/model/search.model';
 import { MoviesState } from 'src/store/states/movies.state';
 import { Store } from '@ngrx/store';
-import { addMoviesToLocalStorage } from 'src/store/actions/movies.actions';
+import { addMoviesToLocalStorage, getQuantityMovies } from 'src/store/actions/movies.actions';
 
 @Component({
 	selector: 'app-card',
@@ -22,6 +22,7 @@ export class CardComponent implements OnInit {
 	public addToWatchList(movie: Movie): void {
 		this.noChecked = !this.noChecked;
 		this._store$.dispatch(addMoviesToLocalStorage({movies: [movie] }));
+		this._store$.dispatch(getQuantityMovies({}));
 	}
 
 }
