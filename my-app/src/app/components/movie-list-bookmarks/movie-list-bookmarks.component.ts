@@ -14,16 +14,15 @@ export class MovieListBookmarksComponent implements OnInit {
   constructor(private activateRoute: ActivatedRoute, private _store$: Store<MoviesState>, private router: Router) { }
 
   public ngOnInit(): void {
-	if (this.activateRoute.snapshot.routeConfig.path === 'watchMovie') {
-		this._store$.dispatch(getMovieListFromLocalStorage({}));
-	}
-	/* 	return this._store$.dispatch(getMovieListFromLocalStorage({})); */
+ 	this.activateRoute.queryParams.subscribe((params: any) => {
+		return this._store$.dispatch(getMovieListFromLocalStorage({ page: params.page ? params.page : 1 }));
+	});
 }
  public changePage(event: any): void {
 	const navigationExtras: NavigationExtras = {
 		queryParams: { page: event.pageIndex + 1 }
 	};
-	this.router.navigate([''], navigationExtras);
+	this.router.navigate(['/watchMovie'], navigationExtras);
 }
 
 }

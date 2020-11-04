@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { Movie, ResultMovies} from '../components/search/model/search.model';
+import { Movie, ResultMovies } from '../components/search/model/search.model';
 import { Genres } from 'src/app/components/genres/model/genres.model';
 import { Result } from '../components/details/model/details.model';
 
@@ -21,17 +21,21 @@ export class MovieService {
 		localStorage.setItem(this.keyForLocalStorage, dataForLocalSrorageString);
 	}
 
-	public loadMovieListFromLocalStorage(): Observable<Movie[]> {
+	public loadMovieListFromLocalStorage(page: number): Observable<any> {
 		const gettingDataFromLocalStorage: string = localStorage.getItem(this.keyForLocalStorage);
 		if (gettingDataFromLocalStorage !== null) {
-			const MoviesFromStorage: Movie[] = JSON.parse(gettingDataFromLocalStorage);
-			return of(MoviesFromStorage);
+			const moviesFromStorage: any = JSON.parse(gettingDataFromLocalStorage);
+			const offset: number = (page - 1 ) * 20;
+			moviesFromStorage.results = moviesFromStorage.results.slice(offset, offset + 20);
+			moviesFromStorage.page = page;
+			return of(moviesFromStorage);
 		}
 		return of([]);
 	}
 
 	public addNewMoviesToBookmarks(movies: Movie[]): void {
 		const dataFromLocalSrorageString: string = localStorage.getItem(this.keyForLocalStorage);
+		const totalMovieOnPage: number = 20;
 		// tslint:disable-next-line: strict-boolean-expressions
 		if (dataFromLocalSrorageString !== null) {
 			const moviesFromLocalStorage: Movie[] = JSON.parse(dataFromLocalSrorageString);
@@ -47,16 +51,20 @@ export class MovieService {
 			});
 
 			const moviesForLocalStorage: any = moviesFromLocalStorage['results'].concat(movies);
-			const dataForLS: any  = {results: moviesForLocalStorage};
+			const totalResults: number = moviesForLocalStorage.length;
+			const totalPages: number  = totalResults < totalMovieOnPage ? 1 : Math.ceil(totalResults / totalMovieOnPage);
+			const dataForLS: any = { results: moviesForLocalStorage, total_results: totalResults, total_pages: totalPages};
+			// tslint:disable-next-line: no-magic-numbers
 			localStorage.clear();
-			localStorage.setItem(this.keyForLocalStorage,  JSON.stringify(dataForLS));
-			} else {
-				const dataForLS: any  = {results: movies};
-				localStorage.setItem(this.keyForLocalStorage, JSON.stringify(dataForLS));
-			}
+			localStorage.setItem(this.keyForLocalStorage, JSON.stringify(dataForLS));
+		} else {
+			const dataForLS: any = { results: movies, total_results: movies.length,
+				 total_pages: movies.length < totalMovieOnPage ? 1 : Math.ceil(movies.length / totalMovieOnPage)};
+			localStorage.setItem(this.keyForLocalStorage, JSON.stringify(dataForLS));
 		}
+	}
 
-	 public searchFilm(query: string, page: number): Observable<ResultMovies> {
+	public searchFilm(query: string, page: number): Observable<ResultMovies> {
 		return this._http.get(`${this.url}search/movie?api_key=${this._mykey}&page=${page}&language=en-US&query=${query}`).pipe(
 			map((item: ResultMovies) => item));
 	}
@@ -66,7 +74,7 @@ export class MovieService {
 			map((item: ResultMovies) => item));
 	}
 
- 	public getTopMovie(page: number): Observable<ResultMovies> {
+	public getTopMovie(page: number): Observable<ResultMovies> {
 		return this._http.get(`${this.url}movie/top_rated?api_key=${this._mykey}&page=${page}&language=en-US`).pipe(
 			map((item: ResultMovies) => item));
 	}

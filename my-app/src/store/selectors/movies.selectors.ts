@@ -8,7 +8,7 @@ export const selectStateMovies: MemoizedSelector<IAppState, MoviesState> =
 
 export const selectMovies: any = createSelector(selectStateMovies, (state: MoviesState) => state.result?.results);
 
-export const selectTotalMovies: any = createSelector(selectStateMovies, (state: MoviesState) => state.result?.total_pages);
+export const selectTotalMovies: any = createSelector(selectStateMovies, (state: MoviesState) => state.result?.total_results);
 
 export const selectMovie: any = createSelector(selectStateMovies, (state: MoviesState) => state.movie);
 
@@ -24,5 +24,3 @@ export const selectMoviesVideoKey: any = createSelector(selectStateMovies, (stat
 	}
 }
 );
-
-// export const selectMoviesFromLocalStorage: any = createSelector(selectStateMovies, (state: MoviesState) => state.movies);

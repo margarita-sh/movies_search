@@ -12,7 +12,7 @@ import { getTopMovies, getMoviesFromSearch, getMoviesByGenres } from 'src/store/
 	templateUrl: './movie-list.component.html',
 	styleUrls: ['./movie-list.component.scss']
 })
-export class MovieListComponent {
+export class MovieListComponent{
 
 	@Output() public pagination: EventEmitter<number> = new EventEmitter<number>();
  	public movies$: Observable<Movie[]> = this._store$.pipe(select(selectMovies));

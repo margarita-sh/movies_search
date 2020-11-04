@@ -43,17 +43,11 @@ export const getPopularMovies: TypeActionCreator<string, {}> = createAction(
 export const setPopularMovies: TypeActionCreator<string, {moviesPopular: Movie[]}> = createAction(
 	'[Set Popular Movie from API]', props<{ moviesPopular: Movie[]}>());
 
-/* export const loadMoviesFromLocalStorage: TypeActionCreator<string, {movies: Movie[]}> = createAction(
-		'[Load MoviesList from LocalStorage]', props<{ movies: Movie[] }>()); */
-
 export const addMoviesToLocalStorage: TypeActionCreator<string, {movies: Movie[]}> = createAction(
 		'[Add MoviesList to LocalStorage]', props<{ movies: Movie[] }>());
 
 export const statusMoviesList: TypeActionCreator<string, {}> = createAction(
-			'[Add MoviesList]');
+		'[Status MoviesList]');
 
-export const getMovieListFromLocalStorage: TypeActionCreator<string, {}> = createAction(
-		'[Get movies from LS]');
-
-/* export const setMoviesFromLocalStorage: TypeActionCreator<string, { movies: Movie[] }> = createAction(
-			'[Set movies From Local Storage]', props<{ movies: Movie[] }>()); */
+export const getMovieListFromLocalStorage: TypeActionCreator<string, {page: number}> = createAction(
+		'[Get movies from LS]', props<{ page: number }>());

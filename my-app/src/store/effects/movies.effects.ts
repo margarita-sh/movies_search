@@ -91,16 +91,11 @@ export class MoviesEffects {
 	public getMoviesListFromLSEffect$: Observable<TypedAction<string>> = createEffect(
 		() => this.actions$.pipe(
 			ofType(getMovieListFromLocalStorage),
-			mergeMap(() => this.movieService.loadMovieListFromLocalStorage()
+			mergeMap((action: MoviesActionProps) => this.movieService.loadMovieListFromLocalStorage(action.page)
 			.pipe(
 				map((result: any) => {
-					console.log('ggggg', result);
 					return setMovies({ result });
 				})
-				/* map((movies: Movie[]) => {
-					console.log('effect', movies);
-					return setMoviesFromLocalStorage({ movies });
-				}) */
 				)
 			)
 		)
