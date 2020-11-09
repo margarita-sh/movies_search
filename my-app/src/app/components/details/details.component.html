@@ -3,7 +3,8 @@
 	<h3>{{ (movieDetails$ | async)?.title }}</h3>
 
 	<div class="app-details--container">
-		<img src="https://image.tmdb.org/t/p/w300{{(movieDetails$ | async)?.poster_path}}" alt="img">
+		<img *ngIf= "(movieDetails$ | async)?.poster_path" src="https://image.tmdb.org/t/p/w300{{(movieDetails$ | async)?.poster_path}}" alt="img">
+		<img *ngIf= "!(movieDetails$ | async)?.poster_path" src="https://image.tmdb.org/t/p/w300{{(movieDetails$ | async)?.poster_path}}" alt="img">
 		<div class="app-details--info">
 			<div class="app-details--margin-string"><p>{{ (movieDetails$ | async)?.overview }}</p></div>
 <!-- 			<p class="app-popular--rate"><i class="material-icons app-popular--star">star</i><span>{{movie?.vote_average}}</span>/10</p> -->
@@ -27,5 +28,6 @@
 		<iframe width="640" height="360" [src]="trustedUrl" frameborder="0"></iframe>
 	</div>
 
+<app-actors></app-actors>
 
 </div>

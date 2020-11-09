@@ -38,6 +38,7 @@ import { MovieListTopComponent } from './components/movie-list-top/movie-list-to
 import { MovieListSearchComponent } from './components/movie-list-search/movie-list-search.component';
 import { WatchListComponent } from './components/watchList/watchList.component';
 import { MovieListBookmarksComponent } from './components/movie-list-bookmarks/movie-list-bookmarks.component';
+import { ActorsComponent } from './actors/actors.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { MovieListBookmarksComponent } from './components/movie-list-bookmarks/m
 	MovieListSearchComponent,
 	WatchListComponent,
 	MovieListBookmarksComponent,
+	ActorsComponent,
   ],
   imports: [
 	BrowserModule,

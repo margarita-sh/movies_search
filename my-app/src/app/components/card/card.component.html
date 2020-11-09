@@ -3,7 +3,7 @@
 		<div class="app-card--wrapper-img" [routerLink]="['/movie-detail', movie.id]">
 			<img *ngIf="movie?.poster_path" src="https://image.tmdb.org/t/p/w300{{movie?.poster_path}}"
 				class="app-card--img">
-			<img *ngIf="!movie?.poster_path" src="assets/img/img-not-found.png" class="app-card--img">
+			<img *ngIf="!movie?.poster_path" src="assets/img/img-not-found.jpg" class="app-card--img">
 		</div>
 		<div class="app-card--information">
 			<div class="app-card--container-title">

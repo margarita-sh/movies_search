@@ -5,8 +5,9 @@ import { Observable } from 'rxjs';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Store, select } from '@ngrx/store';
 import { MoviesState } from 'src/store/states/movies.state';
-import { getMoviesDetails } from 'src/store/actions/movies.actions';
-import { selectMovie, selectMoviesVideoKey } from 'src/store/selectors/movies.selectors';
+import { getMoviesDetails, getActors } from 'src/store/actions/movies.actions';
+import { selectMovie, selectMoviesVideoKey, selectActors } from 'src/store/selectors/movies.selectors';
+import { Cast } from 'src/app/actors/model/actors.model';
 
 @Component({
 	selector: 'app-details',
@@ -20,6 +21,7 @@ export class DetailsComponent implements OnInit {
 	public trustedUrl: SafeResourceUrl;
 	public movieDetails$: Observable<DetailsModel> = this._store$.pipe(select(selectMovie));
 	public selectMoviesVideoKey$: Observable<DetailsModel> = this._store$.pipe(select(selectMoviesVideoKey));
+	/* public selectActors$:  Observable<Cast[]> = this._store$.pipe(select(selectActors)); */
 
 	constructor(private activateRoute: ActivatedRoute,
 		private sanitizer: DomSanitizer, public _store$: Store<MoviesState>) { }
@@ -27,6 +29,7 @@ export class DetailsComponent implements OnInit {
 		this.activateRoute.params.subscribe((params: ActivatedRoute) => {
 			const movieId: number = params['movieId'];
 			this._store$.dispatch(getMoviesDetails({ idMovie: movieId }));
+			this._store$.dispatch(getActors({ idMovie: movieId }));
 			this.selectMoviesVideoKey$.subscribe((item: any) => {
 				if (item) {
 					this.srcVideo = this.srcVideoFromYoutube + item.key;

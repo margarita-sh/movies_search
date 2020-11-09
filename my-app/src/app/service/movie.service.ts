@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { Movie, ResultMovies } from '../components/search/model/search.model';
 import { Genres } from 'src/app/components/genres/model/genres.model';
 import { Result } from '../components/details/model/details.model';
+import { Actors, Cast } from '../actors/model/actors.model';
 
 @Injectable({
 	providedIn: 'root'
@@ -15,11 +16,6 @@ export class MovieService {
 	private keyForLocalStorage: string = 'keyForLocalStorageBookmarks';
 	constructor(private _http: HttpClient) {
 	}
-
-	/* public save(movies: Movie[]): void {
-		const dataForLocalSrorageString: string = JSON.stringify(movies);
-		localStorage.setItem(this.keyForLocalStorage, dataForLocalSrorageString);
-	} */
 
 	public loadMovieListFromLocalStorage(page: number): Observable<any> {
 		const gettingDataFromLocalStorage: string = localStorage.getItem(this.keyForLocalStorage);
@@ -36,8 +32,8 @@ export class MovieService {
 	}
 
 	public getQuantityMovies(): Observable<any> {
-	const dataFromLS: any = JSON.parse(localStorage.getItem(this.keyForLocalStorage));
-		if( dataFromLS !== null) {
+		const dataFromLS: any = JSON.parse(localStorage.getItem(this.keyForLocalStorage));
+		if (dataFromLS !== null) {
 			return of(dataFromLS);
 		}
 	}
@@ -98,9 +94,20 @@ export class MovieService {
 	public getDetails(movie_id: number): Observable<any> {
 		return this._http.get(`${this.url}movie/${movie_id}?api_key=${this._mykey}&append_to_response=videos`);
 	}
+
 	public outputGenres(): Observable<Genres> {
 		return this._http.get(`${this.url}genre/movie/list?api_key=${this._mykey}&language=en-US`).pipe(
 			map((item: any) => item.genres));
+	}
+// https://api.themoviedb.org/3/movie/539885/credits?api_key=dd4d819639705d332d531217b4f7c6b6
+	public getPersonCast(id: number): Observable<Cast[]> {
+		console.log('id', id);
+		return this._http.get(`${this.url}movie/${id}/credits?api_key=${this._mykey}`).pipe(
+			map((item: Actors) => {
+				console.log('item.cast', item.cast);
+				return item.cast;
+			})
+		);
 	}
 
 }

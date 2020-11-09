@@ -3,6 +3,7 @@ import { TypedAction } from '@ngrx/store/src/models';
 import { Genres } from 'src/app/components/genres/model/genres.model';
 import { Movie, ResultMovies } from 'src/app/components/search/model/search.model';
 import { DetailsModel } from 'src/app/components/details/model/details.model';
+import { Actors, Cast } from 'src/app/actors/model/actors.model';
 
 type TypeActionCreator<S extends string, O extends object> = ActionCreator<
 	S, (props: O) => & TypedAction<S>
@@ -10,7 +11,9 @@ type TypeActionCreator<S extends string, O extends object> = ActionCreator<
 
 export interface MoviesActionProps extends Action {
 	movies: Movie[];
-	id: Genres['id'];
+ 	id: Genres['id'];
+/* 	idActors: Actors['id']; */
+	cast: Cast[];
 	query: string;
 	idMovie: number;
 	movie: DetailsModel;
@@ -36,26 +39,32 @@ export const getTopMovies: TypeActionCreator<string, { page: number }> = createA
 export const getMoviesDetails: TypeActionCreator<string, { idMovie: number }> = createAction(
 	'[Get MovieDetails from API]', props<{ idMovie: number }>());
 
-export const setMoviesDetails: TypeActionCreator<string, {movie: DetailsModel}> = createAction(
+export const setMoviesDetails: TypeActionCreator<string, { movie: DetailsModel }> = createAction(
 	'[Set MovieDetails from API]', props<{ movie: DetailsModel }>());
 
 export const getPopularMovies: TypeActionCreator<string, {}> = createAction(
 	'[Get Popular Movies from API]');
 
-export const setPopularMovies: TypeActionCreator<string, {moviesPopular: Movie[]}> = createAction(
-	'[Set Popular Movie from API]', props<{ moviesPopular: Movie[]}>());
+export const setPopularMovies: TypeActionCreator<string, { moviesPopular: Movie[] }> = createAction(
+	'[Set Popular Movie from API]', props<{ moviesPopular: Movie[] }>());
 
-export const addMoviesToLocalStorage: TypeActionCreator<string, {movies: Movie[]}> = createAction(
+export const addMoviesToLocalStorage: TypeActionCreator<string, { movies: Movie[] }> = createAction(
 	'[Add MoviesList to LocalStorage]', props<{ movies: Movie[] }>());
 
 export const statusMoviesList: TypeActionCreator<string, {}> = createAction(
 	'[Status MoviesList]');
 
-export const getMovieListFromLocalStorage: TypeActionCreator<string, {page: number}> = createAction(
+export const getMovieListFromLocalStorage: TypeActionCreator<string, { page: number }> = createAction(
 	'[Get movies from LS]', props<{ page: number }>());
 
 export const getQuantityMovies: TypeActionCreator<string, {}> = createAction(
 	'[Get quantity Movies]');
 
-export const quantityMoviesForBadge: TypeActionCreator<string, {quantityMovies: number}> = createAction(
-	'[Set quantity Movies]', props<{quantityMovies: number}>());
+export const quantityMoviesForBadge: TypeActionCreator<string, { quantityMovies: number }> = createAction(
+	'[Set quantity Movies]', props<{ quantityMovies: number }>());
+
+export const getActors: TypeActionCreator<string, { idMovie: number }> = createAction(
+	'[Get actors by API]', props<{ idMovie: number }>());
+
+ export const setActors: TypeActionCreator<string, {cast: Cast[]}> = createAction(
+	'[Set actors by API]', props<{ cast: Cast[] }>());

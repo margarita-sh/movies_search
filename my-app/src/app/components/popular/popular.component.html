@@ -5,7 +5,7 @@
 			<div class="app-popular--img-container"  [routerLink]="['movie-detail/', movie?.id]">
 				<img *ngIf="movie?.poster_path"
 					src="https://image.tmdb.org/t/p/w200{{movie?.poster_path}}">
-				<img *ngIf="!movie?.poster_path" src="assets/img/img-not-found.png">
+				<img *ngIf="!movie?.poster_path" src="assets/img/img-not-found.jpg">
 				<h3 class="app-popular--title-movie">{{ movie?.title | sliceString }}</h3>
 				 <p class="app-popular--rate"><i class="material-icons app-popular--star">star</i><span>{{movie?.vote_average}}</span>/10</p>
 			</div>
