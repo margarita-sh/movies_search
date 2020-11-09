@@ -37,7 +37,6 @@ public responsiveOptions: any;
 
   // tslint:disable-next-line: no-empty
   public ngOnInit(): void {
-	  console.log(this.actors$.subscribe(item => console.log(item)));
   }
 
 }

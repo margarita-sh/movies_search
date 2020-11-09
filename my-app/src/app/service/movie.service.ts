@@ -4,8 +4,8 @@ import { map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Movie, ResultMovies } from '../components/search/model/search.model';
 import { Genres } from 'src/app/components/genres/model/genres.model';
-import { Result } from '../components/details/model/details.model';
-import { Actors, Cast } from '../actors/model/actors.model';
+import { Actors, Cast } from '../components/actors/model/actors.model';
+import { ActorDetails } from '../components/actor-details/model/actor-details.model';
 
 @Injectable({
 	providedIn: 'root'
@@ -99,15 +99,17 @@ export class MovieService {
 		return this._http.get(`${this.url}genre/movie/list?api_key=${this._mykey}&language=en-US`).pipe(
 			map((item: any) => item.genres));
 	}
-// https://api.themoviedb.org/3/movie/539885/credits?api_key=dd4d819639705d332d531217b4f7c6b6
+
 	public getPersonCast(id: number): Observable<Cast[]> {
-		console.log('id', id);
 		return this._http.get(`${this.url}movie/${id}/credits?api_key=${this._mykey}`).pipe(
-			map((item: Actors) => {
-				console.log('item.cast', item.cast);
-				return item.cast;
-			})
+			map((item: Actors) =>  item.cast)
 		);
 	}
+
+	public getActorDetail(id: number): Observable<ActorDetails> {
+		return this._http.get(`${this.url}person/${id}?api_key=${this._mykey}`).pipe(
+			map((item: ActorDetails) => item)
+		);
+	  }
 
 }

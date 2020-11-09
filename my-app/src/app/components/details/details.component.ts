@@ -7,7 +7,7 @@ import { Store, select } from '@ngrx/store';
 import { MoviesState } from 'src/store/states/movies.state';
 import { getMoviesDetails, getActors } from 'src/store/actions/movies.actions';
 import { selectMovie, selectMoviesVideoKey, selectActors } from 'src/store/selectors/movies.selectors';
-import { Cast } from 'src/app/actors/model/actors.model';
+import { Cast } from 'src/app/components/actors/model/actors.model';
 
 @Component({
 	selector: 'app-details',

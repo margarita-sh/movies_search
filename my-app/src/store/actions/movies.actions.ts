@@ -3,7 +3,8 @@ import { TypedAction } from '@ngrx/store/src/models';
 import { Genres } from 'src/app/components/genres/model/genres.model';
 import { Movie, ResultMovies } from 'src/app/components/search/model/search.model';
 import { DetailsModel } from 'src/app/components/details/model/details.model';
-import { Actors, Cast } from 'src/app/actors/model/actors.model';
+import { Cast } from 'src/app/components/actors/model/actors.model';
+import { ActorDetails } from 'src/app/components/actor-details/model/actor-details.model';
 
 type TypeActionCreator<S extends string, O extends object> = ActionCreator<
 	S, (props: O) => & TypedAction<S>
@@ -12,7 +13,6 @@ type TypeActionCreator<S extends string, O extends object> = ActionCreator<
 export interface MoviesActionProps extends Action {
 	movies: Movie[];
  	id: Genres['id'];
-/* 	idActors: Actors['id']; */
 	cast: Cast[];
 	query: string;
 	idMovie: number;
@@ -21,6 +21,8 @@ export interface MoviesActionProps extends Action {
 	page: number;
 	result: ResultMovies;
 	quantityMovies: number;
+	idActor: Cast['id'];
+	actor: ActorDetails;
 
 }
 
@@ -68,3 +70,9 @@ export const getActors: TypeActionCreator<string, { idMovie: number }> = createA
 
  export const setActors: TypeActionCreator<string, {cast: Cast[]}> = createAction(
 	'[Set actors by API]', props<{ cast: Cast[] }>());
+
+export const getDetailsActor: TypeActionCreator<string, { idActor: Cast['id'] }> = createAction(
+		'[Get details of actors by API]', props<{ idActor: Cast['id'] }>());
+
+export const setDetailsActor: TypeActionCreator<string, {actor: ActorDetails}> = createAction(
+		'[Set details of actors by API]', props<{ actor: ActorDetails }>());

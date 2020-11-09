@@ -28,3 +28,5 @@ export const selectMoviesVideoKey: any = createSelector(selectStateMovies, (stat
 export const quantityMovies: any = createSelector(selectStateMovies, (state: MoviesState) => state.quantityMovies);
 
 export const selectActors: any = createSelector(selectStateMovies, (state: MoviesState) => state.cast);
+
+export const selectDetailsActor: any = createSelector(selectStateMovies, (state: MoviesState) => state.actor);

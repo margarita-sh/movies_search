@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { TypedAction } from '@ngrx/store/src/models';
 import { createEffect, ofType, Actions } from '@ngrx/effects';
-import { getMoviesByGenres, MoviesActionProps, setMovies, getMoviesFromSearch, getTopMovies, getMoviesDetails, setMoviesDetails, getPopularMovies, setPopularMovies, statusMoviesList, addMoviesToLocalStorage, getMovieListFromLocalStorage, quantityMoviesForBadge, getQuantityMovies, getActors, setActors } from '../actions/movies.actions';
+import { getMoviesByGenres, MoviesActionProps, setMovies, getMoviesFromSearch, getTopMovies, getMoviesDetails, setMoviesDetails, getPopularMovies, setPopularMovies, statusMoviesList, addMoviesToLocalStorage, getMovieListFromLocalStorage, quantityMoviesForBadge, getQuantityMovies, getActors, setActors, getDetailsActor, setDetailsActor } from '../actions/movies.actions';
 import { mergeMap, map } from 'rxjs/operators';
 import { Movie, ResultMovies } from 'src/app/components/search/model/search.model';
 import { MovieService } from 'src/app/service/movie.service';
 import { DetailsModel } from 'src/app/components/details/model/details.model';
-import { Cast } from 'src/app/actors/model/actors.model';
+import { Cast } from 'src/app/components/actors/model/actors.model';
+import { ActorDetails } from 'src/app/components/actor-details/model/actor-details.model';
 
 @Injectable()
 export class MoviesEffects {
@@ -116,14 +117,26 @@ export class MoviesEffects {
 		)
 	);
 
-	public setActorseffect$: Observable<TypedAction<string>> = createEffect(
+	public setActorsEffect$: Observable<TypedAction<string>> = createEffect(
 		() => this.actions$.pipe(
 			ofType(getActors),
 			mergeMap((action: MoviesActionProps) => this.movieService.getPersonCast(action.idMovie)
 				.pipe(
 					map((cast: Cast[]) => {
-						console.log('cast', cast);
 						return setActors({ cast });
+					})
+				)
+			)
+		)
+	);
+
+	public setDetailsActorEffect$: Observable<TypedAction<string>> = createEffect(
+		() => this.actions$.pipe(
+			ofType(getDetailsActor),
+			mergeMap((action: MoviesActionProps) => this.movieService.getActorDetail(action.idActor)
+				.pipe(
+					map((actor: ActorDetails) => {
+						return setDetailsActor({ actor });
 					})
 				)
 			)

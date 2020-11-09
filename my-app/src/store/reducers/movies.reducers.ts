@@ -33,6 +33,12 @@ const moviesReducer: ActionReducer<MoviesState, Action> = createReducer(
 			...state,
 			cast: action.cast
 		});
+	}),
+	on(MoviesAction.setDetailsActor, (state: MoviesState, action: MoviesAction.MoviesActionProps ): MoviesState => {
+		return ({
+			...state,
+			actor: action.actor
+		});
 	})
 );
 

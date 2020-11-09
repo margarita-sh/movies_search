@@ -1,0 +1,30 @@
+@import '../../../assets/style/variables.scss'; 
+
+.app-actor-details {
+	margin:1.5rem;
+	box-shadow: $base-shadow;
+	padding: 0.5rem;
+	
+
+	&--container {
+		display:flex;
+	}
+
+	&--information {
+		margin-left:1rem;
+	}
+	 &--wrapper-img {
+ 		width:300px;
+	} 
+
+	&--name {
+		 font-size: $title-font-size; 
+	}
+
+	&--container-name {
+		display: flex;
+		justify-content: space-between; 
+		margin:1rem 0;
+	}
+
+}

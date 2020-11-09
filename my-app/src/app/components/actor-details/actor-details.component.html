@@ -1,0 +1,18 @@
+<div class="app-actor-details">
+	<div class="app-actor-details--container">
+		<div class="app-actor-details--wrapper-img">
+			<img *ngIf="(actor$ | async)?.profile_path" src="https://image.tmdb.org/t/p/w300{{(actor$ | async)?.profile_path}}"
+				class="app-card--img">
+			<img *ngIf="!(actor$ | async)?.profile_path" src="assets/img/img-not-found.jpg" class="app-card--img">
+		</div>
+		<div class="app-actor-details--information">
+			<div class="app-actor-details--container-name">
+				<h3 class="app-actor-details--name">{{ (actor$ | async)?.name }}</h3>
+			</div>
+			<p>{{ (actor$ | async)?.biography}}</p>
+			<p><strong>Place of Birth: </strong>{{ (actor$ | async)?.place_of_birth }}</p>
+			<p><strong>Born: </strong>{{ (actor$ | async)?.birthday | fullDatePipe}}</p>
+			<p *ngIf="(actor$ | async)?.deathday"><strong>Place of Birth: </strong>{{ (actor$ | async)?.deathday | fullDatePipe }}</p>
+		</div>
+	</div>
+</div> 

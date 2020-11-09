@@ -1,13 +1,12 @@
 <div class="app-details">
 
-	<h3>{{ (movieDetails$ | async)?.title }}</h3>
+	<h3 class="app-details--title">{{ (movieDetails$ | async)?.title }}</h3>
 
 	<div class="app-details--container">
 		<img *ngIf= "(movieDetails$ | async)?.poster_path" src="https://image.tmdb.org/t/p/w300{{(movieDetails$ | async)?.poster_path}}" alt="img">
 		<img *ngIf= "!(movieDetails$ | async)?.poster_path" src="https://image.tmdb.org/t/p/w300{{(movieDetails$ | async)?.poster_path}}" alt="img">
 		<div class="app-details--info">
 			<div class="app-details--margin-string"><p>{{ (movieDetails$ | async)?.overview }}</p></div>
-<!-- 			<p class="app-popular--rate"><i class="material-icons app-popular--star">star</i><span>{{movie?.vote_average}}</span>/10</p> -->
 			<div class="app-details--margin-string"><span><strong>Average vote: </strong> <i class="material-icons app-details--star">star</i> {{ (movieDetails$ | async)?.vote_average }}/10</span></div>
 			<div class="app-details--margin-string"><span><strong>Data release: </strong>{{ (movieDetails$ | async)?.release_date | fullDatePipe}}</span></div>
 			<div class="app-details--genre app-details--margin-string">
