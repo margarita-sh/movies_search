@@ -21,7 +21,6 @@ export class DetailsComponent implements OnInit {
 	public trustedUrl: SafeResourceUrl;
 	public movieDetails$: Observable<DetailsModel> = this._store$.pipe(select(selectMovie));
 	public selectMoviesVideoKey$: Observable<DetailsModel> = this._store$.pipe(select(selectMoviesVideoKey));
-	/* public selectActors$:  Observable<Cast[]> = this._store$.pipe(select(selectActors)); */
 
 	constructor(private activateRoute: ActivatedRoute,
 		private sanitizer: DomSanitizer, public _store$: Store<MoviesState>) { }

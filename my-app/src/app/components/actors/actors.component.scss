@@ -23,7 +23,7 @@
   }
   
   .listing__title {
-    font-size: 1.8rem;
+   	font-size: $title-font-size;;
     letter-spacing: $letter-spacing;
   
     @media (min-width: $breakpoint-large) {
@@ -62,7 +62,6 @@
     }
   
     img {
-      width: 100%;
       transition: all .5s ease-out;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
@@ -173,4 +172,3 @@
   .listing-item-style:hover .overlay {
     opacity: 1;
   }
-  

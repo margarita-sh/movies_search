@@ -1,9 +1,8 @@
 <div class="app-search">
-	<button pButton type="button" label="Ok" class="p-button-outlined app-search--button" [routerLink]="['/search', nameMovie]"></button>
+<button pButton type="button" label="Ok" class="p-button-outlined app-search--button" [routerLink]="['/search', nameMovie]"></button>
 <span class="p-input-icon-left">
     <i class="pi pi-search"></i>
 	<input type="text" pInputText [(ngModel)]="nameMovie" placeholder="Search" class="app-search--input">   
 </span>
-<!-- <button [routerLink]="['search', nameMovie]" [queryParams]="{ nameMovie: nameMovie }">Search</button> -->
-<!-- <button pButton type="button" label="Ok" class="p-button-outlined" [routerLink]="['search', nameMovie]" [queryParams]="{ nameMovie: nameMovie }"></button> -->
+
 </div>

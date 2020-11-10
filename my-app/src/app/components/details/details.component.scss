@@ -3,7 +3,7 @@
 .app-details {
 	margin:1.5rem;
 	box-shadow: $base-shadow;
-	padding: 0.5rem;
+	padding: 1rem;
 	font-size: $base-font-size;
 
 	&--container {
@@ -14,6 +14,7 @@
 	}
 	&--title {
 		margin: 1rem 0;
+		font-size: $title-font-size;
 	}
 
 	&--comma {

@@ -22,7 +22,7 @@ export class PopularComponent implements OnInit {
 		},
 		{
 			breakpoint: '768px',
-			numVisible: 4,
+			numVisible: 5,
 			numScroll: 1
 		},
 		{
