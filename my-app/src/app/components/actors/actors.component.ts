@@ -20,17 +20,17 @@ public responsiveOptions: any;
 		{
 			breakpoint: '1400px',
 			numVisible: 4,
-			numScroll: 3
+			numScroll: 2
 		},
 		{
 			breakpoint: '768px',
 			numVisible: 2,
-			numScroll: 2
+			numScroll: 5
 		},
 		{
 			breakpoint: '560px',
 			numVisible: 1,
-			numScroll: 1
+			numScroll: 3
 		}
 	];
   }
