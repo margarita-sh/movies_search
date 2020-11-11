@@ -6,3 +6,12 @@
 	margin-left: 4rem;
 	line-height: $base-line-height;
 }
+
+
+@media(max-width: $breakpoint-small) {
+	.app-genres--item {
+		margin: 0.8rem;
+		display:inline-block;
+	}
+}
+

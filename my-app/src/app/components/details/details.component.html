@@ -3,30 +3,42 @@
 	<h3 class="app-details--title">{{ (movieDetails$ | async)?.title }}</h3>
 
 	<div class="app-details--container">
-		<img *ngIf= "(movieDetails$ | async)?.poster_path" src="https://image.tmdb.org/t/p/w300{{(movieDetails$ | async)?.poster_path}}" alt="img">
-		<img *ngIf= "!(movieDetails$ | async)?.poster_path" src="https://image.tmdb.org/t/p/w300{{(movieDetails$ | async)?.poster_path}}" alt="img">
+		<div>
+			<img *ngIf="(movieDetails$ | async)?.poster_path"
+				src="https://image.tmdb.org/t/p/w300{{(movieDetails$ | async)?.poster_path}}" alt="img">
+			<img *ngIf="!(movieDetails$ | async)?.poster_path"
+				src="https://image.tmdb.org/t/p/w300{{(movieDetails$ | async)?.poster_path}}" alt="img">
+
+		</div>
 		<div class="app-details--info">
-			<div class="app-details--margin-string"><p>{{ (movieDetails$ | async)?.overview }}</p></div>
-			<div class="app-details--margin-string"><span><strong>Average vote: </strong> <i class="material-icons app-details--star">star</i> {{ (movieDetails$ | async)?.vote_average }}/10</span></div>
-			<div class="app-details--margin-string"><span><strong>Data release: </strong>{{ (movieDetails$ | async)?.release_date | fullDatePipe}}</span></div>
+			<div class="app-details--margin-string"><span>{{ (movieDetails$ | async)?.overview }}</span></div>
+			<div class="app-details--margin-string"><span><strong>Average vote: </strong> <i
+						class="material-icons app-details--star">star</i>
+					{{ (movieDetails$ | async)?.vote_average }}/10</span></div>
+			<div class="app-details--margin-string"><span><strong>Data release:
+					</strong>{{ (movieDetails$ | async)?.release_date | fullDatePipe}}</span></div>
 			<div class="app-details--genre app-details--margin-string">
 				<strong>Genre:</strong>
-				<a class="app-details--comma" *ngFor="let genre of (movieDetails$ | async)?.genres" [routerLink]="['/genre', genre.id]">{{ genre?.name }}</a>
+				<a class="app-details--comma" *ngFor="let genre of (movieDetails$ | async)?.genres"
+					[routerLink]="['/genre', genre.id]">{{ genre?.name }}</a>
 			</div>
-			<div class="app-details--contry app-details--margin-string">
+			<div class="app-details--country app-details--margin-string">
 				<strong>Country:</strong>
-				<span class="app-details--comma" *ngFor="let country of (movieDetails$ | async)?.production_countries">{{ country.name }}</span>
+				<span class="app-details--comma"
+					*ngFor="let country of (movieDetails$ | async)?.production_countries">{{ country.name }}</span>
 			</div>
 
-			<div class="app-details--margin-string"><span><strong>Duration: </strong>{{ (movieDetails$ | async)?.runtime }} min</span></div>
-			<div class="app-details--margin-string"><span><strong>Budget: </strong>{{ (movieDetails$ | async)?.budget }} $</span></div>
+			<div class="app-details--margin-string"><span><strong>Duration:
+					</strong>{{ (movieDetails$ | async)?.runtime }} min</span></div>
+			<div class="app-details--margin-string"><span><strong>Budget: </strong>{{ (movieDetails$ | async)?.budget }}
+					$</span></div>
 		</div>
 	</div>
 
-	<div *ngIf="trustedUrl" class="app-details--video"> 
+	<div *ngIf="trustedUrl" class="app-details--video">
 		<iframe width="640" height="360" [src]="trustedUrl" frameborder="0"></iframe>
 	</div>
 
-<app-actors></app-actors>
+	<app-actors></app-actors>
 
 </div>

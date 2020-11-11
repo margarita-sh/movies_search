@@ -7,6 +7,11 @@
   outline: none;
 }
 
+html {
+	margin: 0;
+	padding: 0;
+} 
+
 body {
 	margin: 0;
 	height: 100%;
@@ -16,7 +21,6 @@ body {
 	font-family: $base-font-family;
 	color: $base-font-color;
 	font-weight: 400;
-	-webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -42,17 +46,6 @@ p {
   font-weight: 400;
 }
 
-hr {
-  display: block;
-  height: 1px;
-  padding: 0;
-  margin: 1rem 0;
-  border: 0;
-  border-top: 1px solid #ccc;
-}
-
-audio,
-canvas,
 iframe,
 img,
 svg,
@@ -60,29 +53,8 @@ video {
   vertical-align: middle;
 }
 
-fieldset {
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
-
-textarea {
-  resize: vertical;
-}
-
 img {
   height: auto;   
   vertical-align: middle;
-  -ms-interpolation-mode: bicubic;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-
-  th,
-  td {
-    padding: 0.5rem 0;
-    text-align: left;
-  }
-}

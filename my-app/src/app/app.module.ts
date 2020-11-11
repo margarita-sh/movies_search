@@ -30,7 +30,6 @@ import { SliceStringPipe } from './pipe/sliceString.pipe';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
-// import { MatBadgeModule } from '@angular/material/badge';
 import {PanelModule} from 'primeng/panel';
 import {TabViewModule} from 'primeng/tabview';
 import { MovieListGenreComponent } from './components/movie-list-genre/movie-list-genre.component';
@@ -40,6 +39,7 @@ import { WatchListComponent } from './components/watchList/watchList.component';
 import { MovieListBookmarksComponent } from './components/movie-list-bookmarks/movie-list-bookmarks.component';
 import { ActorsComponent } from './components/actors/actors.component';
 import { ActorDetailsComponent } from './components/actor-details/actor-details.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +59,7 @@ import { ActorDetailsComponent } from './components/actor-details/actor-details.
 	MovieListBookmarksComponent,
 	ActorsComponent,
 	ActorDetailsComponent,
+	FooterComponent,
   ],
   imports: [
 	BrowserModule,

@@ -1,5 +1,6 @@
+@import '../assets/style/base.scss';
+
 .app-component {
-	width:1600px;
 	max-width: 1600px;
 	min-width:375px;
 	margin:auto;
@@ -7,18 +8,61 @@
 &--container{
 	width:100%;
 	display:flex;
+	outline: 2px solid fuchsia;
 }
 &--genres {
  	width:30%;
 }
 
 &--outlet {
- width:70%;
-	}
+ 	width:70%;
+}
 
 &--header {
-display: flex;
-justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
+}	
 }
-	
+@media(max-width: $breakpoint-xlarge) {
+	.app-component{
+		width: $breakpoint-xlarge;
+
+	}
+}
+@media(max-width: $breakpoint-large) {
+	.app-component{
+		width: $breakpoint-large;
+	}
+}
+
+@media(max-width: $breakpoint-medium) {
+	.app-component{
+		width:$breakpoint-medium;
+
+	}
+}
+
+@media(max-width: $breakpoint-small) {
+	.app-component{
+		width:$breakpoint-small;
+		margin: 0 0.5rem;
+
+
+		&--container{
+		flex-direction: column;
+		}
+		&--genres {
+			 width:100%;
+		}
+		
+		&--outlet {
+			 width:100%;
+		}
+	}
+}
+
+@media(max-width: $breakpoint-xsmall) {
+	.app-component{
+		width:$breakpoint-xsmall;
+	}
 }

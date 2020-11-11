@@ -1,19 +1,18 @@
 @import '../../../assets/style/base.scss';
  
 .app-popular {
-width:100%;
-margin:1rem;
-font-family: $font-family--sans-serif;
+	width:100%;
+	font-family: $font-family--sans-serif;
 
 &--img-container {
-text-align: center;
-height: 100%;
+	text-align: center;
+	height: 100%;
 }
 
 &--title-movie {
 	margin: 1rem 0;
 	font-size: $title-font-size;
-	height: 2.5rem;
+	height: 3.2rem;
 }
 
 &--star {
@@ -22,5 +21,33 @@ height: 100%;
 &--rate {
 	font-size: $title-font-size;
 } 
+}
+
+
+@media(max-width: $breakpoint-xlarge) {
+	.app-popular {
+&--title-movie {
+	height: 2.5rem;
+}
+}
+}
+
+@media(max-width: $breakpoint-large) {
+	.app-popular {
+		&--title-movie {
+			font-size: $base-font-size; 
+		}
+		}
+}
+
+/* @media(max-width: $breakpoint-medium) {
+	
+}
+
+@media(max-width: $breakpoint-small) {
 
 }
+
+@media(max-width: $breakpoint-xsmall) {
+	
+} */

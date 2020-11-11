@@ -18,8 +18,8 @@ public responsiveOptions: any;
   constructor(public _store$: Store<MoviesState>) {
 	this.responsiveOptions = [
 		{
-			breakpoint: '1024px',
-			numVisible: 3,
+			breakpoint: '1400px',
+			numVisible: 4,
 			numScroll: 3
 		},
 		{

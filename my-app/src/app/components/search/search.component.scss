@@ -10,3 +10,21 @@
 		margin-left: 1rem;
 	} 
 }
+
+
+
+@media(max-width: $breakpoint-small) {
+	.app-search {
+		margin: 2rem 3.5rem;
+		&--input {
+			width: 20rem;
+		}
+		&--button {
+			margin-left: 1rem;
+		} 
+	}
+}
+
+/* @media(max-width: $breakpoint-xsmall) {
+	
+}  */

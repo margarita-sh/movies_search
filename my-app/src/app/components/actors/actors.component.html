@@ -1,19 +1,19 @@
-<div *ngIf= "actors$ | async" class="listing-space">
-	<div class="listing__head">
-		<h2 class="listing__title">Cast</h2>
+<div *ngIf="actors$ | async" class="app-actors">
+	<div class="app-actors--head">
+		<h2 class="app-actors--title">Cast</h2>
 	</div>
-	<p-carousel [value]="actors$ | async" [numVisible]="5" [numScroll]="4" [circular]="false" [responsiveOptions]="responsiveOptions">
+	<p-carousel [value]="actors$ | async" [numVisible]="4" [numScroll]="4" [circular]="false"
+		[responsiveOptions]="responsiveOptions">
 		<ng-template let-actor pTemplate="item">
-			<div class="listing-item-style" [routerLink]="['/person', actor.id]">
-				<div class="overlay">
-					<div class="hover">Details</div>
+			<div class="app-actors--item-style" [routerLink]="['/person', actor.id]">
+				<div class="app-actors--overlay">
+					<div class="app-actors--hover">Details</div>
 				</div>
-				<div class="">
-				<img *ngIf="actor?.profile_path"
-					src="https://image.tmdb.org/t/p/w200/{{actor?.profile_path}}">
-				<img *ngIf="!actor?.profile_path" src="assets/img/img-not-found.jpg" class="img-not-found">
-				<h6>{{ actor?.name }}</h6>
-			</div>
+	
+					<img *ngIf="actor?.profile_path" src="https://image.tmdb.org/t/p/w200/{{actor?.profile_path}}">
+					<img *ngIf="!actor?.profile_path" src="assets/img/img-not-found.jpg" class="img-not-found">
+					<h6>{{ actor?.name }}</h6>
+
 			</div>
 		</ng-template>
 	</p-carousel>

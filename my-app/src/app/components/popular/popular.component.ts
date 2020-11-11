@@ -16,18 +16,23 @@ export class PopularComponent implements OnInit {
 	public moviesPopular$: Observable<Movie[]> = this._store$.pipe(select(selectMoviesPopular));
 	public responsiveOptions: any = [
 		{
+			breakpoint: '1400px',
+			numVisible: 5,
+			numScroll: 3
+		},
+		{
 			breakpoint: '1024px',
-			numVisible: 6,
+			numVisible: 4,
 			numScroll: 3
 		},
 		{
 			breakpoint: '768px',
-			numVisible: 5,
+			numVisible: 3,
 			numScroll: 1
 		},
 		{
-			breakpoint: '560px',
-			numVisible: 3,
+			breakpoint: '400px',
+			numVisible: 2,
 			numScroll: 1
 		}
 	];
