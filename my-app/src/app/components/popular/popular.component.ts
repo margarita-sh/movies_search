@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../search/model/search.model';
-import { MovieService } from '../../service/movie.service';
 import { Store, select } from '@ngrx/store';
 import { MoviesState } from 'src/store/states/movies.state';
 import { getPopularMovies } from 'src/store/actions/movies.actions';

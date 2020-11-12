@@ -37,9 +37,9 @@ export class MovieService {
 	public isMovieExistInLS(movie: Movie): boolean {
 		const gettingDataFromLocalStorage: string = localStorage.getItem(this.keyForLocalStorage);
 		const moviesFromStorage: any = JSON.parse(gettingDataFromLocalStorage);
-		if( moviesFromStorage && moviesFromStorage.results) {
+		if ( moviesFromStorage && moviesFromStorage.results) {
 			return !!moviesFromStorage.results.find(item => item.id === movie.id);
-		}else{
+		} else {
 			return false;
 		}
 	}
@@ -53,8 +53,7 @@ export class MovieService {
 	public addNewMoviesToBookmarks(movies: Movie[]): any {
 		const dataFromLocalSrorageString: string = localStorage.getItem(this.keyForLocalStorage);
 		const totalMovieOnPage: number = 20;
-		let dataForLS = {};
-		// tslint:disable-next-line: strict-boolean-expressions
+		let dataForLS: any = {};
 		if (dataFromLocalSrorageString !== null) {
 			const moviesFromLocalStorage: Movie[] = JSON.parse(dataFromLocalSrorageString);
 			movies = movies.filter((item: Movie) => {
@@ -72,8 +71,6 @@ export class MovieService {
 			const totalResults: number = moviesForLocalStorage.length;
 			const totalPages: number = totalResults < totalMovieOnPage ? 1 : Math.ceil(totalResults / totalMovieOnPage);
 			 dataForLS = { results: moviesForLocalStorage, total_results: totalResults, total_pages: totalPages };
-			// tslint:disable-next-line: no-magic-numbers
-			//localStorage.clear();
 			localStorage.setItem(this.keyForLocalStorage, JSON.stringify(dataForLS));
 		} else {
 			 dataForLS = {
@@ -87,11 +84,9 @@ export class MovieService {
 	}
 
 	public removeFilmFromLS(movie: Movie): Observable<any> {
-		console.log('movie', movie);
 		return this.loadMovieListFromLocalStorage(-1).
 			pipe(
 				map((movies: ResultMovies) => {
-					console.log('movies', movies);
 					if (movies.results) {
 						movies.results = movies.results.filter((item: Movie) => item.id !== movie.id);
 						movies.total_results = movies.results.length;

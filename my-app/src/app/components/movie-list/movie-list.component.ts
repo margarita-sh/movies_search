@@ -1,8 +1,8 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Movie } from '../search/model/search.model';
 import { Store, select } from '@ngrx/store';
-import { Observable, combineLatest } from 'rxjs';
-import { selectMovies, selectTotalMovies, selectMoviesLS } from 'src/store/selectors/movies.selectors';
+import { Observable} from 'rxjs';
+import { selectMovies, selectTotalMovies } from 'src/store/selectors/movies.selectors';
 import { MoviesState } from 'src/store/states/movies.state';
 import { MovieService } from 'src/app/service/movie.service';
 
@@ -23,11 +23,6 @@ export class MovieListComponent implements OnInit {
 		public movieService: MovieService
 	) { }
 	public ngOnInit(): void {
-		/* 	combineLatest(this.movies$, this.movieService.loadMovieListFromLocalStorage(1))
-				.subscribe(
-					([movies, favs]) => {
-						console.log(movies, favs);
-					}); */
 		if (this.customMoviesSelector && this.customTotalMoviesSelector) {
 			this.movies$ = this._store$.pipe(select(this.customMoviesSelector));
 			this.totalMovies$ = this._store$.pipe(select(this.customTotalMoviesSelector));

@@ -9,7 +9,6 @@ export interface MoviesState {
 	movie: DetailsModel;
 	moviesPopular: Movie[];
 	moviesFromLS: ResultMovies;
-	/* quantityMovies: number; */
 	cast: Cast[];
 	actor: ActorDetails;
 }
@@ -21,7 +20,6 @@ export const initialState: MoviesState = {
 	movie: null,
 	moviesPopular: [],
 	result: null,
-	/* quantityMovies: 0, */
 	cast: [],
 	actor: null,
 	moviesFromLS: null,

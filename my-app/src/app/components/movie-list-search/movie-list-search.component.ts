@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { MoviesState } from 'src/store/states/movies.state';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { getMoviesFromSearch } from 'src/store/actions/movies.actions';
-import { Observable } from 'rxjs';
-import { Movie } from '../search/model/search.model';
-import { selectMovies, selectTotalMovies } from 'src/store/selectors/movies.selectors';
 
 @Component({
 	selector: 'app-movie-list-search',

@@ -22,19 +22,12 @@ export class CardComponent implements OnInit {
 	}
 
 	public addToWatchList(movieLS: Movie): void {
-		
 		if (this.checked) {
 			this._store$.dispatch(removeMovieFromLS({ movieLS: this.movie }));
 		} else {
 			this._store$.dispatch(addMoviesToLocalStorage({ movies: [movieLS] }));
 		}
 		this.checked = !this.checked;
-		//
-		// if (!this.checked) {
-		// 	this._store$.dispatch(addMoviesToLocalStorage({movies: [movieLS] }));
-		// 	this._store$.dispatch(getQuantityMovies({}));
-		// }
-		// this._store$.dispatch(removeMovieFromLS({movieLS}));
 	}
 
 }

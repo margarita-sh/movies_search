@@ -96,7 +96,6 @@ export class MoviesEffects {
 			mergeMap((action: MoviesActionProps) => this.movieService.loadMovieListFromLocalStorage(action.page)
 				.pipe(
 					map((moviesFromLS: any) => {
-						//return setMovies({ result });
 						return setMoviesInLS({ moviesFromLS });
 					})
 				)
@@ -117,27 +116,12 @@ export class MoviesEffects {
 		)
 	);
 
-	/* 	public removeMovieEffect$: Observable<TypedAction<string>> = createEffect(
-			() => this.actions$.pipe(
-				ofType(removeMovieFromLS),
-				mergeMap((action: MoviesActionProps) => this.movieService.removeFilmFromLS(action.movieLS)
-					.pipe(
-						map((result: any) => {
-							console.log('movies', result);
-							return setMovies({ result });
-						})
-					)
-				)
-			)
-		); */
-
 	public quantityMoviesffect$: Observable<TypedAction<string>> = createEffect(
 		() => this.actions$.pipe(
 			ofType(getQuantityMovies),
 			mergeMap(() => this.movieService.getQuantityMovies()
 				.pipe(
 					map((result: any) => {
-						console.log('result', result);
 						const quantityMovies: number = result;
 						return quantityMoviesForBadge({ quantityMovies });
 					})

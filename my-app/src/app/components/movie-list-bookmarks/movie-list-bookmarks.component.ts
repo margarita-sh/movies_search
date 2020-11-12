@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { getMovieListFromLocalStorage } from 'src/store/actions/movies.actions';
-import { Store, select } from '@ngrx/store';
+import { Store} from '@ngrx/store';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { MoviesState } from 'src/store/states/movies.state';
-import { Observable } from 'rxjs';
 import { selectMoviesLS, quantityMovies } from 'src/store/selectors/movies.selectors';
 
 @Component({

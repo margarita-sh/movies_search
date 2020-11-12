@@ -10,7 +10,7 @@ import { MovieListBookmarksComponent } from './components/movie-list-bookmarks/m
 import { ActorDetailsComponent } from './components/actor-details/actor-details.component';
 
 const routes: Routes = [
-	{ path: '', component: MovieListTopComponent }, // here add path
+	{ path: '', component: MovieListTopComponent },
 	{ path: 'genre/:id', component: MovieListGenreComponent },
 	{ path: 'genre/:id/:page', component: MovieListGenreComponent },
 	{ path: 'search/:nameMovie', component: MovieListSearchComponent },

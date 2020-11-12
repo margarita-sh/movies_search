@@ -22,7 +22,6 @@ export interface MoviesActionProps extends Action {
 	page: number;
 	result: ResultMovies;
 	moviesFromLS: ResultMovies;
-/* 	quantityMovies: number; */
 	idActor: Cast['id'];
 	actor: ActorDetails;
 

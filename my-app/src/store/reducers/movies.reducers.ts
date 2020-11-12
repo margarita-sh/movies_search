@@ -22,12 +22,7 @@ const moviesReducer: ActionReducer<MoviesState, Action> = createReducer(
 			moviesPopular: action.moviesPopular
 		});
 	}),
- /* 	on(MoviesAction.quantityMoviesForBadge, (state: MoviesState, action: MoviesAction.MoviesActionProps ): MoviesState => {
-		return ({
-			...state,
-			quantityMovies: action.quantityMovies
-		});
-	}), */
+
 	on(MoviesAction.setActors, (state: MoviesState, action: MoviesAction.MoviesActionProps ): MoviesState => {
 		return ({
 			...state,

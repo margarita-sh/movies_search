@@ -3,7 +3,7 @@ import { Store, select} from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { quantityMovies } from 'src/store/selectors/movies.selectors';
 import { MoviesState } from 'src/store/states/movies.state';
-import { getQuantityMovies, getMovieListFromLocalStorage } from 'src/store/actions/movies.actions';
+import { getMovieListFromLocalStorage } from 'src/store/actions/movies.actions';
 
 @Component({
   selector: 'app-watch-list',
