@@ -52,3 +52,25 @@
 		font-size: $title-font-size;
 	}
 }
+
+
+@media(max-width: $breakpoint-small) {
+	.app-card {
+		&--rating {
+			display:none;
+		}
+	}
+}
+
+
+@media(max-width: $breakpoint-xsmall) {
+	.app-card {
+		&--container {
+			flex-direction: column;
+		}
+
+		&--information {
+		margin:auto;
+		}
+	}
+}

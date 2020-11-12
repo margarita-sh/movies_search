@@ -26,7 +26,7 @@
 
 @media(max-width: $breakpoint-xlarge) {
 	.app-popular {
-&--title-movie {
+	&--title-movie {
 	height: 2.5rem;
 }
 }
@@ -39,15 +39,3 @@
 		}
 		}
 }
-
-/* @media(max-width: $breakpoint-medium) {
-	
-}
-
-@media(max-width: $breakpoint-small) {
-
-}
-
-@media(max-width: $breakpoint-xsmall) {
-	
-} */

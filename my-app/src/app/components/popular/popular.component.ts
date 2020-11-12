@@ -31,9 +31,9 @@ export class PopularComponent implements OnInit {
 			numScroll: 1
 		},
 		{
-			breakpoint: '400px',
-			numVisible: 2,
-			numScroll: 1
+			breakpoint: '375px',
+			numVisible: 1,
+			numScroll: 3
 		}
 	];
 	constructor(public _store$: Store<MoviesState>) { }

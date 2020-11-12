@@ -15,16 +15,11 @@
 
 @media(max-width: $breakpoint-small) {
 	.app-search {
-		margin: 2rem 3.5rem;
+		margin: 2rem;
 		&--input {
-			width: 20rem;
+			width: 15rem;
 		}
-		&--button {
-			margin-left: 1rem;
-		} 
+		
 	}
 }
 
-/* @media(max-width: $breakpoint-xsmall) {
-	
-}  */

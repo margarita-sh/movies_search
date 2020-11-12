@@ -28,7 +28,7 @@ public responsiveOptions: any;
 			numScroll: 5
 		},
 		{
-			breakpoint: '560px',
+			breakpoint: '375px',
 			numVisible: 1,
 			numScroll: 3
 		}

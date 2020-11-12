@@ -11,7 +11,15 @@
 @media(max-width: $breakpoint-small) {
 	.app-genres--item {
 		margin: 0.8rem;
-		display:inline-block;
+		display: inline-block;
+		
+	}
+}
+
+@media(max-width: $breakpoint-xsmall) {
+	.app-genres--item {
+		margin: 0.4rem;
+		font-size: $base-font-size;
 	}
 }
 

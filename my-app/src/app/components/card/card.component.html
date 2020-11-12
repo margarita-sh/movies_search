@@ -10,7 +10,7 @@
 				<h3 class="app-card--title">{{ movie.title }}</h3>
 				<mat-icon class="app-card--bookmarks" (click)="addToWatchList(movie)" [style.color]="noChecked?'white':'#dc4666'">bookmark_border</mat-icon>
 			</div>
-			<p-rating [ngModel]="movie.vote_average" readonly="true" stars="10" [cancel]="false"></p-rating>
+			<p-rating [ngModel]="movie.vote_average" readonly="true" stars="10" [cancel]="false" class="app-card--rating"></p-rating>
 			<p>{{ movie.overview }}</p>
 			<p><strong>Average vote: </strong><i
 					class="material-icons app-card--star">star</i>{{ movie.vote_average }}/10</p>
