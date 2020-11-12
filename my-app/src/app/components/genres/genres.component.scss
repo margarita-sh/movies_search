@@ -7,6 +7,11 @@
 	line-height: $base-line-height;
 }
 
+@media(max-width: $breakpoint-medium) {
+	.app-genres--item {
+		font-size: $base-font-size;
+	}
+}
 
 @media(max-width: $breakpoint-small) {
 	.app-genres--item {

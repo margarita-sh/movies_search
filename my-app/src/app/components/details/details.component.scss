@@ -47,3 +47,14 @@
 
 
 
+@media(max-width: $breakpoint-xsmall) {
+	.app-details {
+		&--container {
+			flex-direction: column;
+		}
+
+		&--info {
+		margin:auto;
+		}
+	}
+}

@@ -28,3 +28,16 @@
 	}
 
 }
+
+
+@media(max-width: $breakpoint-xsmall) {
+	.app-actor-details {
+		&--container {
+			flex-direction: column;
+		}
+
+		&--information {
+		margin:auto;
+		}
+	}
+}

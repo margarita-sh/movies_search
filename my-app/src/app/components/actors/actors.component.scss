@@ -8,16 +8,22 @@
 		align-items: baseline;
 		margin-bottom: 1.5rem;
 	}
+
 	&--title {
 		font-size: $title-font-size;;
 	 	letter-spacing: $letter-spacing;
-  }
+	}
+
+	&--img-not-found {
+	height: 300px !important;
+	} 
+
  	&--item-style {
  		margin: 0.5rem; 
 		position: relative;
 		cursor: pointer;
-		width:200px;
-		height: 300px; 
+	 	width:200px;
+		height: auto;
 
 		&:focus {
 			outline-style: none;
@@ -27,7 +33,8 @@
 			border-top-left-radius: 5px;
 			border-top-right-radius: 5px;
 			width:100%;
-			height: 100%; 
+		/* 	height: 100%;  */
+			height: auto;
 			overflow: hidden;
 		  }
 
