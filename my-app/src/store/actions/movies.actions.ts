@@ -17,10 +17,12 @@ export interface MoviesActionProps extends Action {
 	query: string;
 	idMovie: number;
 	movie: DetailsModel;
+	movieLS: Movie;
 	moviesPopular: Movie[];
 	page: number;
 	result: ResultMovies;
-	quantityMovies: number;
+	moviesFromLS: ResultMovies;
+/* 	quantityMovies: number; */
 	idActor: Cast['id'];
 	actor: ActorDetails;
 
@@ -72,7 +74,13 @@ export const getActors: TypeActionCreator<string, { idMovie: number }> = createA
 	'[Set actors by API]', props<{ cast: Cast[] }>());
 
 export const getDetailsActor: TypeActionCreator<string, { idActor: Cast['id'] }> = createAction(
-		'[Get details of actors by API]', props<{ idActor: Cast['id'] }>());
+	'[Get details of actors by API]', props<{ idActor: Cast['id'] }>());
 
 export const setDetailsActor: TypeActionCreator<string, {actor: ActorDetails}> = createAction(
-		'[Set details of actors by API]', props<{ actor: ActorDetails }>());
+	'[Set details of actors by API]', props<{ actor: ActorDetails }>());
+
+export const removeMovieFromLS: TypeActionCreator<string, {movieLS: Movie}> = createAction(
+	'[ Remove movie from LS]', props<{ movieLS: Movie }>());
+
+ export const setMoviesInLS: TypeActionCreator<string, {moviesFromLS: ResultMovies}> = createAction(
+	'[ set movie in LS]', props<{ moviesFromLS: ResultMovies }>());

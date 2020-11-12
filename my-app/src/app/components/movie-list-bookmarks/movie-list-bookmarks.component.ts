@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { getMovieListFromLocalStorage } from 'src/store/actions/movies.actions';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { MoviesState } from 'src/store/states/movies.state';
+import { Observable } from 'rxjs';
+import { selectMoviesLS, quantityMovies } from 'src/store/selectors/movies.selectors';
 
 @Component({
   selector: 'app-movie-list-bookmarks',
@@ -10,6 +12,8 @@ import { MoviesState } from 'src/store/states/movies.state';
   styleUrls: ['./movie-list-bookmarks.component.scss']
 })
 export class MovieListBookmarksComponent implements OnInit {
+public moviesLS: any = selectMoviesLS;
+public totalMoviesLS: any = quantityMovies;
 
   constructor(private activateRoute: ActivatedRoute, private _store$: Store<MoviesState>, private router: Router) { }
 

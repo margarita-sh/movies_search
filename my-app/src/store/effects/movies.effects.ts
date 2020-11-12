@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { TypedAction } from '@ngrx/store/src/models';
 import { createEffect, ofType, Actions } from '@ngrx/effects';
-import { getMoviesByGenres, MoviesActionProps, setMovies, getMoviesFromSearch, getTopMovies, getMoviesDetails, setMoviesDetails, getPopularMovies, setPopularMovies, statusMoviesList, addMoviesToLocalStorage, getMovieListFromLocalStorage, quantityMoviesForBadge, getQuantityMovies, getActors, setActors, getDetailsActor, setDetailsActor } from '../actions/movies.actions';
+import { getMoviesByGenres, MoviesActionProps, setMovies, getMoviesFromSearch, getTopMovies, getMoviesDetails, setMoviesDetails, getPopularMovies, setPopularMovies, statusMoviesList, addMoviesToLocalStorage, getMovieListFromLocalStorage, quantityMoviesForBadge, getQuantityMovies, getActors, setActors, getDetailsActor, setDetailsActor, removeMovieFromLS, setMoviesInLS } from '../actions/movies.actions';
 import { mergeMap, map } from 'rxjs/operators';
 import { Movie, ResultMovies } from 'src/app/components/search/model/search.model';
 import { MovieService } from 'src/app/service/movie.service';
@@ -82,8 +82,8 @@ export class MoviesEffects {
 			ofType(addMoviesToLocalStorage),
 			mergeMap((action: MoviesActionProps) => of(this.movieService.addNewMoviesToBookmarks(action.movies))
 				.pipe(
-					map(() => {
-						return statusMoviesList({});
+					map((moviesFromLS: ResultMovies) => {
+						return setMoviesInLS({ moviesFromLS });
 					})
 				)
 			)
@@ -95,13 +95,41 @@ export class MoviesEffects {
 			ofType(getMovieListFromLocalStorage),
 			mergeMap((action: MoviesActionProps) => this.movieService.loadMovieListFromLocalStorage(action.page)
 				.pipe(
-					map((result: any) => {
-						return setMovies({ result });
+					map((moviesFromLS: any) => {
+						//return setMovies({ result });
+						return setMoviesInLS({ moviesFromLS });
 					})
 				)
 			)
 		)
 	);
+
+	public removeMovieEffect$: Observable<TypedAction<string>> = createEffect(
+		() => this.actions$.pipe(
+			ofType(removeMovieFromLS),
+			mergeMap((action: MoviesActionProps) => this.movieService.removeFilmFromLS(action.movieLS)
+				.pipe(
+					map((moviesFromLS: ResultMovies) => {
+						return setMoviesInLS({ moviesFromLS });
+					})
+				)
+			)
+		)
+	);
+
+	/* 	public removeMovieEffect$: Observable<TypedAction<string>> = createEffect(
+			() => this.actions$.pipe(
+				ofType(removeMovieFromLS),
+				mergeMap((action: MoviesActionProps) => this.movieService.removeFilmFromLS(action.movieLS)
+					.pipe(
+						map((result: any) => {
+							console.log('movies', result);
+							return setMovies({ result });
+						})
+					)
+				)
+			)
+		); */
 
 	public quantityMoviesffect$: Observable<TypedAction<string>> = createEffect(
 		() => this.actions$.pipe(
@@ -109,7 +137,8 @@ export class MoviesEffects {
 			mergeMap(() => this.movieService.getQuantityMovies()
 				.pipe(
 					map((result: any) => {
-						const quantityMovies: number = result.results.length;
+						console.log('result', result);
+						const quantityMovies: number = result;
 						return quantityMoviesForBadge({ quantityMovies });
 					})
 				)

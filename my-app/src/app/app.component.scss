@@ -25,26 +25,12 @@
 }
 @media(max-width: $breakpoint-xlarge) {
 	.app-component{
-		/* width: $breakpoint-xlarge; */
 		width: 100%;
-	}
-}
-@media(max-width: $breakpoint-large) {
-	.app-component{
-	/* 	width: $breakpoint-large; */
-	}
-}
-
-@media(max-width: $breakpoint-medium) {
-	.app-component{
-	/* 	width:$breakpoint-medium; */
-
 	}
 }
 
 @media(max-width: $breakpoint-small) {
 	.app-component{
-		/* width:$breakpoint-small; */
 		margin: 0 0.5rem;
 
 

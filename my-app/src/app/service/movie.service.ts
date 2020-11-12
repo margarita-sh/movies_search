@@ -21,26 +21,39 @@ export class MovieService {
 		const gettingDataFromLocalStorage: string = localStorage.getItem(this.keyForLocalStorage);
 		if (gettingDataFromLocalStorage !== null) {
 			const moviesFromStorage: any = JSON.parse(gettingDataFromLocalStorage);
-			// tslint:disable-next-line: no-magic-numbers
-			const offset: number = (page - 1) * 20;
-			// tslint:disable-next-line: no-magic-numbers
-			moviesFromStorage.results = moviesFromStorage.results.slice(offset, offset + 20);
+			if (page !== -1) {
+				// tslint:disable-next-line: no-magic-numbers
+				const offset: number = (page - 1) * 20;
+				// tslint:disable-next-line: no-magic-numbers
+				moviesFromStorage.results = moviesFromStorage.results.slice(offset, offset + 20);
+			}
+
 			moviesFromStorage.page = page;
 			return of(moviesFromStorage);
 		}
-		return of([]);
+		return of({});
 	}
 
-	public getQuantityMovies(): Observable<any> {
-		const dataFromLS: any = JSON.parse(localStorage.getItem(this.keyForLocalStorage));
-		if (dataFromLS !== null) {
-			return of(dataFromLS);
+	public isMovieExistInLS(movie: Movie): boolean {
+		const gettingDataFromLocalStorage: string = localStorage.getItem(this.keyForLocalStorage);
+		const moviesFromStorage: any = JSON.parse(gettingDataFromLocalStorage);
+		if( moviesFromStorage && moviesFromStorage.results) {
+			return !!moviesFromStorage.results.find(item => item.id === movie.id);
+		}else{
+			return false;
 		}
 	}
 
-	public addNewMoviesToBookmarks(movies: Movie[]): void {
+	public getQuantityMovies(): Observable<number> {
+		const dataFromLS: any = JSON.parse(localStorage.getItem(this.keyForLocalStorage));
+
+		return of(dataFromLS && dataFromLS.results ? dataFromLS.results.length : 0);
+	}
+
+	public addNewMoviesToBookmarks(movies: Movie[]): any {
 		const dataFromLocalSrorageString: string = localStorage.getItem(this.keyForLocalStorage);
 		const totalMovieOnPage: number = 20;
+		let dataForLS = {};
 		// tslint:disable-next-line: strict-boolean-expressions
 		if (dataFromLocalSrorageString !== null) {
 			const moviesFromLocalStorage: Movie[] = JSON.parse(dataFromLocalSrorageString);
@@ -58,17 +71,41 @@ export class MovieService {
 			const moviesForLocalStorage: any = moviesFromLocalStorage['results'].concat(movies);
 			const totalResults: number = moviesForLocalStorage.length;
 			const totalPages: number = totalResults < totalMovieOnPage ? 1 : Math.ceil(totalResults / totalMovieOnPage);
-			const dataForLS: any = { results: moviesForLocalStorage, total_results: totalResults, total_pages: totalPages };
+			 dataForLS = { results: moviesForLocalStorage, total_results: totalResults, total_pages: totalPages };
 			// tslint:disable-next-line: no-magic-numbers
-			localStorage.clear();
+			//localStorage.clear();
 			localStorage.setItem(this.keyForLocalStorage, JSON.stringify(dataForLS));
 		} else {
-			const dataForLS: any = {
+			 dataForLS = {
 				results: movies, total_results: movies.length,
 				total_pages: movies.length < totalMovieOnPage ? 1 : Math.ceil(movies.length / totalMovieOnPage)
 			};
 			localStorage.setItem(this.keyForLocalStorage, JSON.stringify(dataForLS));
 		}
+
+		return dataForLS;
+	}
+
+	public removeFilmFromLS(movie: Movie): Observable<any> {
+		console.log('movie', movie);
+		return this.loadMovieListFromLocalStorage(-1).
+			pipe(
+				map((movies: ResultMovies) => {
+					console.log('movies', movies);
+					if (movies.results) {
+						movies.results = movies.results.filter((item: Movie) => item.id !== movie.id);
+						movies.total_results = movies.results.length;
+						this.save(movies);
+					}
+
+					return movies;
+				})
+			);
+	}
+
+	public save(movies: any): void {
+		const dataForLocalSrorageString: string = JSON.stringify(movies);
+		localStorage.setItem(this.keyForLocalStorage, dataForLocalSrorageString);
 	}
 
 	public searchFilm(query: string, page: number): Observable<ResultMovies> {
@@ -102,7 +139,7 @@ export class MovieService {
 
 	public getPersonCast(id: number): Observable<Cast[]> {
 		return this._http.get(`${this.url}movie/${id}/credits?api_key=${this._mykey}`).pipe(
-			map((item: Actors) =>  item.cast)
+			map((item: Actors) => item.cast)
 		);
 	}
 
@@ -110,6 +147,6 @@ export class MovieService {
 		return this._http.get(`${this.url}person/${id}?api_key=${this._mykey}`).pipe(
 			map((item: ActorDetails) => item)
 		);
-	  }
+	}
 
 }
