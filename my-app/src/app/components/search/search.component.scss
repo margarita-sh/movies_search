@@ -1,14 +1,17 @@
 @import '../../../assets/style/base.scss';
 .app-search {
-	display:flex;
-	flex-direction: row-reverse;
 	margin: 2rem 3.5rem;
+	&--form {
+		display:flex;
+		flex-direction: row-reverse;
+	}
 	&--input {
 		width: 30rem;
 	}
 	&--button {
 		margin-left: 1rem;
 	} 
+	
 }
 
 
